@@ -24,11 +24,11 @@ public class Light_View : MonoBehaviour
        
 
 
-        float fov = 10f;
+        float fov = 360f;
         int RayCount = 50;
         float angle = 0f;
         float angleincrease = fov / RayCount;
-        float viewdistance = 5f;
+        float viewdistance = 2f;
        
 
         Vector3[] vertices = new Vector3[RayCount + 1 + 1];
