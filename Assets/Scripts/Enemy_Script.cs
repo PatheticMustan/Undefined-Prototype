@@ -11,6 +11,8 @@ public class Enemy_Script : MonoBehaviour
     void Start()
     {
         target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+        
+
     }
 
    
@@ -18,20 +20,18 @@ public class Enemy_Script : MonoBehaviour
     {
         if (overlapping == true)
         {
+
             speed = 1;
         }
 
+
+
+
+
         transform.position = Vector2.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
-    }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.tag == "Player")
-        {
-            Destroy(collision.gameObject);
-        }
     }
-
+  
 
 }
 
