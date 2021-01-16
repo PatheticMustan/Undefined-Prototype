@@ -21,7 +21,6 @@ public class Light_View : MonoBehaviour
 
     private void Update()
     {
-       
 
 
         float fov = 10f;
