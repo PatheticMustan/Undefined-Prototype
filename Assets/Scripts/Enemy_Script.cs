@@ -2,38 +2,28 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy_Script : MonoBehaviour
-{
+public class Enemy_Script : MonoBehaviour {
+    private Rigidbody2D rb;
+    private Vector2 movement;
 
-    public float speed;
+    public float moveSpeed;
     public Transform target;
-    public bool overlapping;
-    void Start()
-    {
+    // public bool overlapping;
+    void Start() {
         target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+
+        rb = gameObject.GetComponent<Rigidbody2D>();
+        moveSpeed = 3;
     }
 
-   
-    void Update()
-    {
-        if (overlapping == true)
-        {
-            speed = 1;
-        }
-
-        transform.position = Vector2.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
-
+    void FixedUpdate() {
+        // ah yes, broken code
+        //movement = Vector2.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime);
+        //rb.MovePosition(rb.position + movement);
+      
+        // move towards the player pos
+        transform.position = Vector2.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime);
     }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.tag == "Player")
-        {
-            Destroy(collision.gameObject);
-        }
-    }
-
-
 }
 
 
