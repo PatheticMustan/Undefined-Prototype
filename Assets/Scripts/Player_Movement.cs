@@ -5,32 +5,57 @@ using UnityEngine;
 public class Player_Movement : MonoBehaviour
 {
    // [SerializeField] public Player_Light fieldofview;
-    Rigidbody2D rb;
-    public float MoveSpeed = 5;
-    Vector2 Movement;
-    
+    private Rigidbody2D rb;
+    private Vector2 Movement;
+
+    public float MoveSpeed;
+
+    [Space()]
+    [Header("Stamina")]
+
+    public float maxStamina;
+    public float stamina;
+    public float staminaConsumption;
+    public float staminaRegeneration;
     
     void Start()
     {
+        MoveSpeed = 3;
+
+        maxStamina = 100;
+        stamina = 100;
+        staminaConsumption = 2;
+        staminaRegeneration = 0.4f;
 
         rb = GetComponent<Rigidbody2D>();
-
-
     }
 
- 
-    
+
+    void Update()
+    {
+        // input
+        Movement.x = Input.GetAxisRaw("Horizontal");
+        Movement.y = Input.GetAxisRaw("Vertical");
+        Movement = Movement.normalized;
+    }
     
     
     void FixedUpdate()
     {
+        // movement
+        //fieldofview.Setorgin(transform.position);
 
-        Movement.x = Input.GetAxisRaw("Horizontal");
-        Movement.y = Input.GetAxisRaw("Vertical");
-        Movement = Movement.normalized;
-       // fieldofview.Setorgin(transform.position);
+        float staminaSpeed = 1f;
 
-        rb.MovePosition(rb.position + Movement * MoveSpeed * Time.fixedDeltaTime);
+        // regen stamina
+        stamina = Mathf.Min(maxStamina, stamina + staminaRegeneration);
+        if (Input.GetKey(KeyCode.LeftShift) && stamina >= staminaConsumption)
+        {
+            stamina -= staminaConsumption;
+            staminaSpeed = 2;
+        }
+
+        rb.MovePosition(rb.position + Movement * MoveSpeed * staminaSpeed * Time.fixedDeltaTime);
 
     }
 }
