@@ -11,8 +11,6 @@ public class Enemy_Script : MonoBehaviour
     void Start()
     {
         target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
-        
-
     }
 
    
@@ -20,7 +18,6 @@ public class Enemy_Script : MonoBehaviour
     {
         if (overlapping == true)
         {
-
             speed = 1;
         }
 
