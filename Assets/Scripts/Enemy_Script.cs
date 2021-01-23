@@ -16,12 +16,11 @@ public class Enemy_Script : MonoBehaviour {
         moveSpeed = 3;
     }
 
-
     void FixedUpdate() {
         // ah yes, broken code
         //movement = Vector2.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime);
         //rb.MovePosition(rb.position + movement);
-
+      
         // move towards the player pos
         transform.position = Vector2.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime);
     }

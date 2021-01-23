@@ -36,7 +36,6 @@ public class Player_Movement : MonoBehaviour {
         Movement = Movement.normalized;
     }
 
-
     void FixedUpdate() {
         // regen stamina
         float staminaSpeed = 1f;
