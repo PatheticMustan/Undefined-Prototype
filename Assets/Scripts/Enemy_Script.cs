@@ -32,7 +32,7 @@ public class Enemy_Script : MonoBehaviour
 
     }
   
-
+    
 }
 
 

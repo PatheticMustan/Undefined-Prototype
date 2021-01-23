@@ -17,6 +17,6 @@ public class GameManager : MonoBehaviour
     }
     public void OnClick()
     {
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("Tile Map");
     }
 }
