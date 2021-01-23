@@ -12,8 +12,8 @@ public class Light_View : MonoBehaviour {
     public float fov;
     public int RayCount;
     public float angle;
-    public float angleincrease;
     public float viewdistance;
+    // public float x;
 
     public bool verbose = true;
 
@@ -22,23 +22,24 @@ public class Light_View : MonoBehaviour {
         mesh = new Mesh();
         GetComponent<MeshFilter>().mesh = mesh;
 
-        fov = 10f;
+        fov = 20f;
         RayCount = 50;
         angle = 0f;
-        angleincrease = fov / RayCount;
+        
         viewdistance = 5f;
     }
 
 
     void Update() {
         if (Input.GetKey(KeyCode.LeftBracket)) {
-            angle += 0.1f;
+            angle += 1.5f;
         }
         if (Input.GetKey(KeyCode.RightBracket)) {
-            angle -= 0.1f;
+            angle -= 1.5f;
         }
 
         float rayAngle = angle;
+        float angleIncrease = fov / RayCount;
 
         Vector3[] vertices = new Vector3[RayCount + 1 + 1];
         Vector2[] uv = new Vector2[vertices.Length];
@@ -55,6 +56,7 @@ public class Light_View : MonoBehaviour {
             if (raycasthit2D.collider == null) {
                 vertex = orgin + GetVectorFromAngle(rayAngle) * viewdistance;
             } else {
+                Debug.Log("light hit!");
                 vertex = raycasthit2D.point;
             }
 
@@ -69,8 +71,7 @@ public class Light_View : MonoBehaviour {
             }
 
             VertexIndex++;
-            // not sure what this is supposed to do
-            rayAngle -= angleincrease;
+            rayAngle -= angleIncrease;
         }
 
         mesh.vertices = vertices;
@@ -79,8 +80,8 @@ public class Light_View : MonoBehaviour {
     }
 
     public static Vector3 GetVectorFromAngle(float angle) {
-        float anglerad = angle * (Mathf.PI / 180f);
-        return new Vector3(Mathf.Cos(anglerad), Mathf.Sin(anglerad));
+        float angleRad = angle * (Mathf.PI / 180f);
+        return new Vector3(Mathf.Cos(angleRad), Mathf.Sin(angleRad));
     }
 
     public static float GetAngleFromVectorFloat(Vector3 dir) {
