@@ -31,6 +31,5 @@ public class Player_Movement : MonoBehaviour
        // fieldofview.Setorgin(transform.position);
 
         rb.MovePosition(rb.position + Movement * MoveSpeed * Time.fixedDeltaTime);
-
     }
 }
