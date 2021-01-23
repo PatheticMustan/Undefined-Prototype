@@ -58,4 +58,8 @@ public class Player_Movement : MonoBehaviour
         rb.MovePosition(rb.position + Movement * MoveSpeed * staminaSpeed * Time.fixedDeltaTime);
 
     }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        
+    }
 }
