@@ -301,12 +301,12 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 7
+  m_Constraints: 4
 --- !u!114 &615483572
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -319,9 +319,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fcfd242e1f2fca4daa98d4a1260af6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
+  moveSpeed: 0
   target: {fileID: 1078433403}
-  overlapping: 0
 --- !u!61 &615483573
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2911,6 +2910,11 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 0
+  fov: 0
+  RayCount: 0
+  angle: 0
+  viewdistance: 0
+  verbose: 1
 --- !u!4 &1322685444
 Transform:
   m_ObjectHideFlags: 0

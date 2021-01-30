@@ -39,12 +39,6 @@ public class Light_View : MonoBehaviour {
 
         float rayAngle = angle;
         float angleIncrease = fov / RayCount;
-    private void Update() {
-        float fov = 0f;
-        int RayCount = 50;
-        float angle = 0f;
-        float angleincrease = fov / RayCount;
-        float viewdistance = 5f;
 
         Vector3[] vertices = new Vector3[RayCount + 1 + 1];
         Vector2[] uv = new Vector2[vertices.Length];
