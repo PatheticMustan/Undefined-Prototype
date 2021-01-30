@@ -25,9 +25,10 @@ public class Light_View : MonoBehaviour {
         fov = 20f;
         RayCount = 50;
         angle = 0f;
-        
+
         viewdistance = 5f;
     }
+
 
     void Update() {
         if (Input.GetKey(KeyCode.LeftBracket)) {
@@ -46,14 +47,16 @@ public class Light_View : MonoBehaviour {
 
         vertices[0] = orgin;
 
+
         int VertexIndex = 1;
         int TrianglesIndex = 0;
         for (int i = 0; i <= RayCount; i++) {
             Vector3 vertex;
-            RaycastHit2D raycasthit2D = Physics2D.Raycast(orgin, GetVectorFromAngle(angle), viewdistance, layerMask);
+            RaycastHit2D raycasthit2D = Physics2D.Raycast(orgin, GetVectorFromAngle(rayAngle), viewdistance, layerMask);
             if (raycasthit2D.collider == null) {
-                vertex = orgin + GetVectorFromAngle(angle) * viewdistance;
+                vertex = orgin + GetVectorFromAngle(rayAngle) * viewdistance;
             } else {
+                Debug.Log("light hit!");
                 vertex = raycasthit2D.point;
             }
 
