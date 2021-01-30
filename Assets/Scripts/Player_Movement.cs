@@ -17,6 +17,8 @@ public class Player_Movement : MonoBehaviour {
     public float staminaConsumption;
     public float staminaRegeneration;
 
+    public Transform pointLight;
+
     void Start() {
         MoveSpeed = 3;
 
@@ -34,6 +36,13 @@ public class Player_Movement : MonoBehaviour {
         Movement.x = Input.GetAxisRaw("Horizontal");
         Movement.y = Input.GetAxisRaw("Vertical");
         Movement = Movement.normalized;
+
+        if (Input.GetKey(KeyCode.LeftBracket)) {
+            pointLight.Rotate(new Vector3(0, 0, 1.5f));
+        }
+        if (Input.GetKey(KeyCode.RightBracket)) {
+            pointLight.Rotate(new Vector3(0, 0, -1.5f));
+        }
     }
 
     void FixedUpdate() {

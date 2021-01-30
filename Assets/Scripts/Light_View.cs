@@ -22,6 +22,8 @@ public class Light_View : MonoBehaviour {
         mesh = new Mesh();
         GetComponent<MeshFilter>().mesh = mesh;
 
+        layerMask = LayerMask.GetMask("Wall");
+
         fov = 20f;
         RayCount = 50;
         angle = 0f;
