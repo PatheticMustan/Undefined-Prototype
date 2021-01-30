@@ -15,16 +15,16 @@ public class Light_View : MonoBehaviour {
         GetComponent<MeshFilter>().mesh = mesh;
     }
 
-<<<<<<< Updated upstream
+// Updated upstream
 
-    private void Update()
-    {
+    //private void Update()
+    //{
        
 
 
-=======
+//
     private void Update() {
->>>>>>> Stashed changes
+// Stashed changes
         float fov = 10f;
         int RayCount = 50;
         float angle = 0f;
