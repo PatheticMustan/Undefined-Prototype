@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player_Movement : MonoBehaviour
-{
-   // [SerializeField] public Player_Light fieldofview;
+public class Player_Movement : MonoBehaviour {
+    // [SerializeField] public Player_Light fieldofview;
     private Rigidbody2D rb;
     private Vector2 Movement;
 
@@ -17,9 +16,8 @@ public class Player_Movement : MonoBehaviour
     public float stamina;
     public float staminaConsumption;
     public float staminaRegeneration;
-    
-    void Start()
-    {
+
+    void Start() {
         MoveSpeed = 3;
 
         maxStamina = 100;
@@ -31,31 +29,28 @@ public class Player_Movement : MonoBehaviour
     }
 
 
-    void Update()
-    {
+    void Update() {
         // input
         Movement.x = Input.GetAxisRaw("Horizontal");
         Movement.y = Input.GetAxisRaw("Vertical");
         Movement = Movement.normalized;
     }
-    
-    
-    void FixedUpdate()
-    {
-        // movement
-        //fieldofview.Setorgin(transform.position);
 
-        float staminaSpeed = 1f;
-
+    void FixedUpdate() {
         // regen stamina
+        float staminaSpeed = 1f;
         stamina = Mathf.Min(maxStamina, stamina + staminaRegeneration);
-        if (Input.GetKey(KeyCode.LeftShift) && stamina >= staminaConsumption)
-        {
+        if (Input.GetKey(KeyCode.LeftShift) && stamina >= staminaConsumption) {
             stamina -= staminaConsumption;
             staminaSpeed = 2;
         }
 
+        // movement
         rb.MovePosition(rb.position + Movement * MoveSpeed * staminaSpeed * Time.fixedDeltaTime);
-
+    }
+    private void OnCollisionEnter2D(Collision2D collision) {
+        if (collision.gameObject.tag == "Enemy") {
+            Destroy(gameObject);
+        }
     }
 }
