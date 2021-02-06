@@ -23,7 +23,9 @@ public class Enemy_Script : MonoBehaviour {
         // move towards the player pos
         float tilesize = 20f;
         if (Vector3.Distance(target.position, transform.position) <= 5 * tilesize) {
-            transform.position = Vector3.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime);
+           
+            
+                 transform.position = Vector3.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime);
         }
     }
 }
