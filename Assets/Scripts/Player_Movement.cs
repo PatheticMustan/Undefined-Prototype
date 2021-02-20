@@ -28,7 +28,7 @@ public class Player_Movement : MonoBehaviour {
 
         maxStamina = 100;
         stamina = 100;
-        staminaConsumption = 1;
+        staminaConsumption = 0.2f;
         staminaRegeneration = 0.4f;
 
         rb = GetComponent<Rigidbody2D>();
@@ -69,20 +69,19 @@ public class Player_Movement : MonoBehaviour {
         if (Input.GetKey(KeyCode.E)) {
             pointLight.Rotate(new Vector3(0, 0, -1.5f));
         }
-    }
 
-    void FixedUpdate() {
         // regen stamina
         float staminaSpeed = 1f;
         stamina = Mathf.Min(maxStamina, stamina + staminaRegeneration);
         if (Input.GetKey(KeyCode.LeftShift) && stamina >= staminaConsumption) {
             stamina -= staminaConsumption;
-            staminaSpeed = 2;
+            staminaSpeed = 2f;
         }
 
         // movement
         rb.MovePosition(rb.position + Movement * moveSpeed * staminaSpeed * Time.fixedDeltaTime);
     }
+
     private void OnCollisionEnter2D(Collision2D collision) {
         if (collision.gameObject.tag == "Enemy") {
             Destroy(gameObject);

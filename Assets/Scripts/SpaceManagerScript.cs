@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class SpaceManagerScript : MonoBehaviour {
     // a boolean to denote if there is an impassable wall
@@ -12,8 +13,20 @@ public class SpaceManagerScript : MonoBehaviour {
     // triggers for buttons, possibly cutscenes...?
     public multiDelegateTrigger[,] triggers;
 
+    // assign in inspector
+    public Tilemap wallTM;
+
     void Start() {
-        // loadLevel();
+        Debug.Log(wallTM.origin);
+        Debug.Log(wallTM.size);
+        
+        loadLevel(wallTM);
+
+        // why is the grid's origin at (-20, -13, 0)?????????
+        // trying to align wallTilemap origin to (0, 0, 0), if you can figure out how, please dm me.
+        //
+        //GridLayout gridLayout = wallTM.transform.parent.GetComponentInParent<Grid>();
+        //Debug.Log(gridLayout.CellToWorld(wallTM.origin)); 
     }
 
     // Update is called once per frame
@@ -33,11 +46,26 @@ public class SpaceManagerScript : MonoBehaviour {
     // https://docs.unity3d.com/ScriptReference/Events.UnityAction.html
     // https://learn.unity.com/tutorial/delegates#5c894658edbc2a0d28f48aee
     // https://stackoverflow.com/questions/12567329/multidimensional-array-vs
-    public void loadLevel(int width, int length) {
-        // somehow figure out how to parse the wall tilemap into passable
+    public void loadLevel(Tilemap levelTilemap) {
+        Vector3Int origin = levelTilemap.origin;
+        Vector3Int size = levelTilemap.size;
+
+        int width = size.x,
+            length = size.y;
+
+        // parse wall tilemap into passable 2d array
         passable = new bool[width, length];
+
+        for (int x = 0; x < width; x++) {
+            for (int y = 0; y < length; y++) {
+                passable[x, y] = levelTilemap.HasTile(origin + new Vector3Int(x, y, 0));
+            }
+        }
+
         // triggers can be set with getTrigger(int, int)
         triggers = new multiDelegateTrigger[width, length];
+
+        Debug.Log(passable);
     }
 
     public multiDelegateTrigger getTrigger(int x, int y) {

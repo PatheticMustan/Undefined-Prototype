@@ -17617,6 +17617,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ff48a431b075484eb5a1e62fa4cbb5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wallTM: {fileID: 1131220411}
 --- !u!4 &1410602068
 Transform:
   m_ObjectHideFlags: 0
