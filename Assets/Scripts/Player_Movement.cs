@@ -28,7 +28,7 @@ public class Player_Movement : MonoBehaviour {
 
         maxStamina = 100;
         stamina = 100;
-        staminaConsumption = 2;
+        staminaConsumption = 1;
         staminaRegeneration = 0.4f;
 
         rb = GetComponent<Rigidbody2D>();
