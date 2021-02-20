@@ -6,7 +6,7 @@ public class Light_View : MonoBehaviour {
     [SerializeField] private LayerMask layerMask;
     private Mesh mesh;
     //private float fov;
-    private Vector3 orgin;
+    private Vector3 origin;
     //private float startingangle;
 
     public float fov;
@@ -18,14 +18,16 @@ public class Light_View : MonoBehaviour {
     public bool verbose = true;
 
     void Start() {
-        Vector3 orgin = Vector3.zero;
+        origin = Vector3.zero;
         mesh = new Mesh();
         GetComponent<MeshFilter>().mesh = mesh;
 
         layerMask = LayerMask.GetMask("Wall");
 
+        Debug.Log(layerMask.value);
+
         fov = 20f;
-        RayCount = 50;
+        RayCount = 10;
         angle = 0f;
 
         viewdistance = 5f;
@@ -47,19 +49,19 @@ public class Light_View : MonoBehaviour {
         Vector2[] uv = new Vector2[vertices.Length];
         int[] triangles = new int[RayCount * 3];
 
-        vertices[0] = orgin;
+        vertices[0] = origin;
 
 
         int VertexIndex = 1;
         int TrianglesIndex = 0;
         for (int i = 0; i <= RayCount; i++) {
             Vector3 vertex;
-            RaycastHit2D raycasthit2D = Physics2D.Raycast(orgin, GetVectorFromAngle(rayAngle), viewdistance, layerMask);
-            if (raycasthit2D.collider == null) {
-                vertex = orgin + GetVectorFromAngle(rayAngle) * viewdistance;
-            } else {
-                Debug.Log("light hit!");
+            RaycastHit2D raycasthit2D = Physics2D.Raycast(origin, GetVectorFromAngle(rayAngle), viewdistance, layerMask);
+            if (raycasthit2D.collider != null) {
+                Debug.Log(raycasthit2D.collider.gameObject.name);
                 vertex = raycasthit2D.point;
+            } else {
+                vertex = origin + GetVectorFromAngle(rayAngle) * viewdistance;
             }
 
             vertices[VertexIndex] = vertex;
@@ -94,8 +96,8 @@ public class Light_View : MonoBehaviour {
         return n;
     }
 
-    // private void SetOrgin(Vector3 orgin) {
-    //     this.orgin = orgin;    
+    // private void SetOrgin(Vector3 origin) {
+    //     this.origin = origin;    
     // }
 
     // private void SetAimDirection(Vector3 AimDirection) {

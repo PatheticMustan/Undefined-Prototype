@@ -52,9 +52,7 @@ public class Player_Movement : MonoBehaviour {
                     movePoint.position += new Vector3(Input.GetAxisRaw("Horizontal"), 0f, 0f);
 
                 }
-            } else 
-
-            if (Mathf.Abs(Input.GetAxisRaw("Vertical")) == 1f) {
+            } else if (Mathf.Abs(Input.GetAxisRaw("Vertical")) == 1f) {
 
                 if (!Physics2D.OverlapCircle(movePoint.position + new Vector3(0f, Input.GetAxisRaw("Vertical"), 0f), .2f, WhatStopsPlayer)) { 
                
@@ -90,6 +88,4 @@ public class Player_Movement : MonoBehaviour {
             Destroy(gameObject);
         }
     }
-
-   
 }
