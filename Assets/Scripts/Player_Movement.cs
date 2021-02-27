@@ -40,7 +40,7 @@ public class Player_Movement : MonoBehaviour {
 
 
     void Update() {
-        //player input
+        //player input //else stops diagonal movement  //.2f is circle of detection 
         transform.position = Vector3.MoveTowards(transform.position, movePoint.position, moveSpeed * Time.deltaTime);
         
         if(Vector3.Distance(transform.position, movePoint.position) == 0f){

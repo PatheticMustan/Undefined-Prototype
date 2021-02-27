@@ -25,7 +25,7 @@ public class Enemy_Script : MonoBehaviour {
         if (Vector3.Distance(target.position, transform.position) <= 5 * tilesize) {
            
             
-                 transform.position = Vector3.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime);
+                 transform.position = Vector3.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime) ;
         }
     }
 }
