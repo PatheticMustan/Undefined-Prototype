@@ -7,7 +7,8 @@ public class Player_Movement : MonoBehaviour {
     private Rigidbody2D rb;
     private Vector2 Movement;
 
- 
+    public GameObject deathScreenGameObject;
+    public bool dead;
 
     [Space()]
     [Header("Stamina")]
@@ -17,7 +18,13 @@ public class Player_Movement : MonoBehaviour {
     public float staminaConsumption;
     public float staminaRegeneration;
 
+    [Space()]
+    [Header("Light")]
+
     public Transform pointLight;
+
+    [Space()]
+    [Header("Movement")]
 
     public float moveSpeed = 5f;
     public Transform movePoint;
@@ -40,34 +47,37 @@ public class Player_Movement : MonoBehaviour {
 
 
     void Update() {
-        //player input
-        transform.position = Vector3.MoveTowards(transform.position, movePoint.position, moveSpeed * Time.deltaTime);
-        
-        if(Vector3.Distance(transform.position, movePoint.position) == 0f){
+        if (!dead) {
+            //player input
+            transform.position = Vector3.MoveTowards(transform.position, movePoint.position, moveSpeed * Time.deltaTime);
 
-            if (Mathf.Abs(Input.GetAxisRaw("Horizontal")) == 1f) {
+            if (Vector3.Distance(transform.position, movePoint.position) == 0f) {
 
-                if(!Physics2D.OverlapCircle(movePoint.position + new Vector3(Input.GetAxisRaw("Horizontal"), 0f, 0f), .2f, WhatStopsPlayer)) {
-                    
-                    movePoint.position += new Vector3(Input.GetAxisRaw("Horizontal"), 0f, 0f);
+                if (Mathf.Abs(Input.GetAxisRaw("Horizontal")) == 1f) {
 
-                }
-            } else if (Mathf.Abs(Input.GetAxisRaw("Vertical")) == 1f) {
+                    if (!Physics2D.OverlapCircle(movePoint.position + new Vector3(Input.GetAxisRaw("Horizontal"), 0f, 0f), .2f, WhatStopsPlayer)) {
 
-                if (!Physics2D.OverlapCircle(movePoint.position + new Vector3(0f, Input.GetAxisRaw("Vertical"), 0f), .2f, WhatStopsPlayer)) { 
-               
-                    movePoint.position += new Vector3(0f, Input.GetAxisRaw("Vertical"), 0f);
+                        movePoint.position += new Vector3(Input.GetAxisRaw("Horizontal"), 0f, 0f);
+
+                    }
+                } else if (Mathf.Abs(Input.GetAxisRaw("Vertical")) == 1f) {
+
+                    if (!Physics2D.OverlapCircle(movePoint.position + new Vector3(0f, Input.GetAxisRaw("Vertical"), 0f), .2f, WhatStopsPlayer)) {
+
+                        movePoint.position += new Vector3(0f, Input.GetAxisRaw("Vertical"), 0f);
+                    }
                 }
             }
+            //light input 
 
-        }
-        //light input 
-
-        if (Input.GetKey(KeyCode.Q)) {
-            pointLight.Rotate(new Vector3(0, 0, 1.5f));
-        }
-        if (Input.GetKey(KeyCode.E)) {
-            pointLight.Rotate(new Vector3(0, 0, -1.5f));
+            if (Input.GetKey(KeyCode.Q)) {
+                pointLight.Rotate(new Vector3(0, 0, 1.5f));
+            }
+            if (Input.GetKey(KeyCode.E)) {
+                pointLight.Rotate(new Vector3(0, 0, -1.5f));
+            }
+        } else {
+            deathScreenGameObject.GetComponent<CanvasGroup>().alpha = Mathf.Min(1, deathScreenGameObject.GetComponent<CanvasGroup>().alpha + 0.01f);
         }
 
         // regen stamina
@@ -84,7 +94,7 @@ public class Player_Movement : MonoBehaviour {
 
     private void OnCollisionEnter2D(Collision2D collision) {
         if (collision.gameObject.tag == "Enemy") {
-            Destroy(gameObject);
+            dead = true;
         }
     }
 }
