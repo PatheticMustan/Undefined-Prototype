@@ -2,35 +2,55 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player_Movement : MonoBehaviour
-{
-   // [SerializeField] public Player_Light fieldofview;
-    Rigidbody2D rb;
-    public float MoveSpeed = 5;
-    Vector2 Movement;
-    
-    
-    void Start()
-    {
+public class Player_Movement : MonoBehaviour {
+    // [SerializeField] public Player_Light fieldofview;
+    private Rigidbody2D rb;
+    private Vector2 Movement;
+
+    public float MoveSpeed;
+
+    [Space()]
+    [Header("Stamina")]
+
+    public float maxStamina;
+    public float stamina;
+    public float staminaConsumption;
+    public float staminaRegeneration;
+
+    void Start() {
+        MoveSpeed = 3;
+
+        maxStamina = 100;
+        stamina = 100;
+        staminaConsumption = 2;
+        staminaRegeneration = 0.4f;
 
         rb = GetComponent<Rigidbody2D>();
-
-
     }
 
- 
-    
-    
-    
-    void FixedUpdate()
-    {
 
+    void Update() {
+        // input
         Movement.x = Input.GetAxisRaw("Horizontal");
         Movement.y = Input.GetAxisRaw("Vertical");
         Movement = Movement.normalized;
-       // fieldofview.Setorgin(transform.position);
+    }
 
-        rb.MovePosition(rb.position + Movement * MoveSpeed * Time.fixedDeltaTime);
+    void FixedUpdate() {
+        // regen stamina
+        float staminaSpeed = 1f;
+        stamina = Mathf.Min(maxStamina, stamina + staminaRegeneration);
+        if (Input.GetKey(KeyCode.LeftShift) && stamina >= staminaConsumption) {
+            stamina -= staminaConsumption;
+            staminaSpeed = 2;
+        }
 
+        // movement
+        rb.MovePosition(rb.position + Movement * MoveSpeed * staminaSpeed * Time.fixedDeltaTime);
+    }
+    private void OnCollisionEnter2D(Collision2D collision) {
+        if (collision.gameObject.tag == "Enemy") {
+            Destroy(gameObject);
+        }
     }
 }
