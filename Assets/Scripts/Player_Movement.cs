@@ -30,6 +30,8 @@ public class Player_Movement : MonoBehaviour {
     //public Transform movePoint;
     //public LayerMask WhatStopsPlayer;
 
+    public Animator animator;
+    
     void Start() {
        
 
@@ -47,6 +49,9 @@ public class Player_Movement : MonoBehaviour {
 
 
     void Update() {
+        animator.SetFloat("Horizontal",Input.GetAxis("Horizontal"));
+        animator.SetFloat("Vertical", Input.GetAxis("Vertical"));
+
         if (!dead) {
             //player input
 
