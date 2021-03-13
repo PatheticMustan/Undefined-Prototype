@@ -6,7 +6,7 @@ public class Enemy_Script : MonoBehaviour {
     // set default values in inspector
     public float moveSpeed = 3;
 
-    public float fovDegrees = 180;
+    public float fovDegrees = 360;
     public float startDeg = 0;
     public float distance = 3;
 
@@ -20,13 +20,13 @@ public class Enemy_Script : MonoBehaviour {
 
     void Start() {
         detected = false;
-        layerMask = (LayerMask.GetMask("Player", "Wall"));
+        layerMask = LayerMask.GetMask("Player", "Wall", "Box");
 
         player = GameObject.Find("Player_Prototype");
         target = player.GetComponent<Transform>();
     }
 
-    void Update() {
+    void FixedUpdate() {
         // raycast!
         // shoot ray to detect walls or the player, whichever it hits first
         Vector3 enemyPos = transform.position;
@@ -58,17 +58,12 @@ public class Enemy_Script : MonoBehaviour {
             RaycastHit2D hit = Physics2D.Raycast(enemyPos, enemyToPlayer, distance, layerMask);
 
             if (hit.collider != null) {
-                //Debug.Log(hit.collider.gameObject.name);
-                detected = true;
+                if (hit.collider.gameObject.tag == "Player") {
+                    transform.position = Vector3.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime);
+                    detected = true;
+                }
             } else {
                 detected = false;
-            }
-
-            // move towards the player pos
-            float tilesize = 20f;
-            if (Vector3.Distance(target.position, transform.position) <= 5 * tilesize) {
-
-                //transform.position = Vector3.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime) ;
             }
         }
     }
