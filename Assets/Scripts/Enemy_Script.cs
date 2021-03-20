@@ -11,6 +11,7 @@ public class Enemy_Script : MonoBehaviour {
     public float distance = 3;
 
     public bool detected;
+    public string[] layers = new string[] { "Player", "Wall", "Box" };
     private int layerMask;
 
     private GameObject player;
@@ -20,7 +21,7 @@ public class Enemy_Script : MonoBehaviour {
 
     void Start() {
         detected = false;
-        layerMask = LayerMask.GetMask("Player", "Wall", "Box");
+        layerMask = LayerMask.GetMask(layers);
 
         player = GameObject.Find("Player_Prototype");
         target = player.GetComponent<Transform>();
