@@ -8,7 +8,7 @@ public class Enemy_Script : MonoBehaviour {
 
     public float fovDegrees = 360;
     public float startDeg = 0;
-    public float distance = 3;
+    public float distance = 9;
 
     public bool detected;
     public string[] layers = new string[] { "Player", "Wall", "Box" };
