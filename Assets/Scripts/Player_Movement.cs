@@ -56,31 +56,18 @@ public class Player_Movement : MonoBehaviour {
 
         if (!dead) {
             //player input
-
             Movement.x = Input.GetAxisRaw("Horizontal");
             Movement.y = Input.GetAxisRaw("Vertical");        
-
-            }
-            //light input 
-        if (Input.GetKey(KeyCode.Q)) {
-                pointLight.Rotate(new Vector3(0, 0, 1.5f));
-            }
-        if (Input.GetKey(KeyCode.E)) {
-                pointLight.Rotate(new Vector3(0, 0, -1.5f));
-            }
-
-
-         else if (dead){
+        } else {
             deathScreenGameObject.GetComponent<CanvasGroup>().alpha = Mathf.Min(1, deathScreenGameObject.GetComponent<CanvasGroup>().alpha + 0.01f);
         }
 
-
         // regen stamina
-       // float staminaSpeed = 1f;
-       // stamina = Mathf.Min(maxStamina, stamina + staminaRegeneration);
-       // if (Input.GetKey(KeyCode.LeftShift) && stamina >= staminaConsumption) {
+        // float staminaSpeed = 1f;
+        // stamina = Mathf.Min(maxStamina, stamina + staminaRegeneration);
+        // if (Input.GetKey(KeyCode.LeftShift) && stamina >= staminaConsumption) {
         //    stamina -= staminaConsumption;
-       //     staminaSpeed = 2f;
+        //     staminaSpeed = 2f;
         //}
 
         // movement
