@@ -52,6 +52,8 @@ public class Player_Movement : MonoBehaviour {
         animator.SetFloat("Horizontal",Input.GetAxis("Horizontal"));
         animator.SetFloat("Vertical", Input.GetAxis("Vertical"));
 
+        
+
         if (!dead) {
             //player input
 

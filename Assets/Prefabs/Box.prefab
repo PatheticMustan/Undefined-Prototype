@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 3797984809737038475}
   - component: {fileID: 3797984809737038472}
   - component: {fileID: 3797984809737038473}
+  - component: {fileID: 3267251271033041129}
+  - component: {fileID: 6536297183018826411}
   m_Layer: 0
   m_Name: Box
   m_TagString: Crate
@@ -129,3 +131,39 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!255 &3267251271033041129
+FixedJoint2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3797984809737038486}
+  m_Enabled: 0
+  serializedVersion: 4
+  m_EnableCollision: 0
+  m_ConnectedRigidBody: {fileID: 0}
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+  m_AutoConfigureConnectedAnchor: 1
+  m_Anchor: {x: 0, y: 0}
+  m_ConnectedAnchor: {x: 0, y: 0}
+  m_DampingRatio: 0
+  m_Frequency: 0
+--- !u!114 &6536297183018826411
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3797984809737038486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee4ce5ee809e8f242a09d4540cde945c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultMass: 0
+  imovableMass: 0
+  beingPushed: 0
+  lastPos: {x: 0, y: 0, z: 0}
+  mode: 0
+  colliding: 0
