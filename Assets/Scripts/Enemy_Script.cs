@@ -39,9 +39,9 @@ public class Enemy_Script : MonoBehaviour {
         bool inFov = false;
         
         if (startDeg < endDeg) { // normal case
-            inFov = startDeg < playerDeg && playerDeg < endDeg;
+            inFov = startDeg <= playerDeg && playerDeg <= endDeg;
         } else { // end wraps around to 0
-            inFov = startDeg < playerDeg || playerDeg < endDeg;
+            inFov = startDeg <= playerDeg || playerDeg <= endDeg;
         }
         
 

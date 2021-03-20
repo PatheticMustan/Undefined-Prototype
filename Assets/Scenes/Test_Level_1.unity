@@ -626,7 +626,7 @@ MonoBehaviour:
   moveSpeed: 2
   fovDegrees: 360
   startDeg: 0
-  distance: 3
+  distance: 6
   detected: 0
 --- !u!61 &615483573
 BoxCollider2D:
@@ -989,7 +989,7 @@ MonoBehaviour:
   moveSpeed: 2
   fovDegrees: 360
   startDeg: 0
-  distance: 3
+  distance: 6
   detected: 0
 --- !u!212 &874538285
 SpriteRenderer:
@@ -32082,7 +32082,7 @@ MonoBehaviour:
   moveSpeed: 2
   fovDegrees: 360
   startDeg: 0
-  distance: 3
+  distance: 6
   detected: 0
 --- !u!212 &1701096127
 SpriteRenderer:
