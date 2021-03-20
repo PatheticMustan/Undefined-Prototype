@@ -26601,6 +26601,7 @@ GameObject:
   - component: {fileID: 1604439305}
   - component: {fileID: 1604439304}
   - component: {fileID: 1604439303}
+  - component: {fileID: 1604439307}
   m_Layer: 0
   m_Name: Bossman
   m_TagString: Enemy
@@ -26681,7 +26682,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fcfd242e1f2fca4daa98d4a1260af6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 3
+  moveSpeed: 3.9
   fovDegrees: 360
   startDeg: 0
   distance: 50
@@ -26689,7 +26690,6 @@ MonoBehaviour:
   layers:
   - Player
   - Wall
-  - 
 --- !u!212 &1604439306
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -26739,6 +26739,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1604439307
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1604439301}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37a92928147fc5e44992c28c2aef1a25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1606696208
 GameObject:
   m_ObjectHideFlags: 0

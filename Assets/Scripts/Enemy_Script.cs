@@ -28,10 +28,14 @@ public class Enemy_Script : MonoBehaviour {
     }
 
     void FixedUpdate() {
-        // raycast!
-        // shoot ray to detect walls or the player, whichever it hits first
+        // check if they're distance enough
         Vector3 enemyPos = transform.position;
         Vector3 playerPos = target.position;
+        if (Vector3.Distance(playerPos, enemyPos) > distance) return;
+
+        // raycast!
+        // shoot ray to detect walls or the player, whichever it hits first
+
         Vector3 enemyToPlayer = playerPos - enemyPos;
 
         startDeg %= 360;
@@ -44,6 +48,8 @@ public class Enemy_Script : MonoBehaviour {
         } else { // end wraps around to 0
             inFov = startDeg <= playerDeg || playerDeg <= endDeg;
         }
+
+        
         
 
         Debug.DrawRay(
@@ -55,17 +61,17 @@ public class Enemy_Script : MonoBehaviour {
         Debug.DrawRay(enemyPos, Quaternion.AngleAxis(startDeg, Vector3.forward)*Vector3.right*distance, Color.yellow);
         Debug.DrawRay(enemyPos, Quaternion.AngleAxis(endDeg, Vector3.forward)*Vector3.right*distance, Color.yellow);
 
-        if (inFov) {
-            RaycastHit2D hit = Physics2D.Raycast(enemyPos, enemyToPlayer, distance, layerMask);
+        if (!inFov) return;
 
-            if (hit.collider != null) {
-                if (hit.collider.gameObject.tag == "Player") {
-                    transform.position = Vector3.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime);
-                    detected = true;
-                }
-            } else {
-                detected = false;
+        RaycastHit2D hit = Physics2D.Raycast(enemyPos, enemyToPlayer, distance, layerMask);
+
+        if (hit.collider != null) {
+            if (hit.collider.gameObject.tag == "Player") {
+                transform.position = Vector3.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime);
+                detected = true;
             }
+        } else {
+            detected = false;
         }
     }
 }
