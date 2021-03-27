@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Light_View : MonoBehaviour {
-    [SerializeField] private LayerMask layerMask;
+    private LayerMask layerMask;
     private Mesh mesh;
     //private float fov;
     private Vector3 origin;
@@ -28,12 +28,12 @@ public class Light_View : MonoBehaviour {
 
 
     void Update() {
-        if (Input.GetKey(KeyCode.LeftBracket)) {
+        /*if (Input.GetKey(KeyCode.LeftBracket)) {
             angle += 2;
         }
         if (Input.GetKey(KeyCode.RightBracket)) {
             angle -= 2;
-        }
+        }*/
 
         float rayAngle = angle;
         float angleIncrease = fov / rayCount;
@@ -53,6 +53,9 @@ public class Light_View : MonoBehaviour {
         for (int i = 0; i <= rayCount; i++) {
             Vector3 vertex;
             RaycastHit2D raycasthit2D = Physics2D.Raycast(origin, GetVectorFromAngle(rayAngle), rayDistance, layerMask);
+
+            Debug.DrawRay(origin, GetVectorFromAngle(rayAngle), Color.green);
+
             if (raycasthit2D.collider != null) {
                 Debug.Log(raycasthit2D.collider.gameObject.name);
                 vertex = raycasthit2D.point;
@@ -74,9 +77,9 @@ public class Light_View : MonoBehaviour {
             rayAngle -= angleIncrease;
         }
 
-        mesh.vertices = vertices;
+        /*mesh.vertices = vertices;
         mesh.uv = uv;
-        mesh.triangles = triangles;
+        mesh.triangles = triangles;*/
     }
 
     public static Vector3 GetVectorFromAngle(float angle) {
