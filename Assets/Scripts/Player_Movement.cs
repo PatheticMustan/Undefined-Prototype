@@ -27,9 +27,11 @@ public class Player_Movement : MonoBehaviour {
     [Header("Movement")]
 
     public float moveSpeed = 5f;
-    public Transform movePoint;
-    public LayerMask WhatStopsPlayer;
+    //public Transform movePoint;
+    //public LayerMask WhatStopsPlayer;
 
+    public Animator animator;
+    
     void Start() {
        
 
@@ -41,55 +43,35 @@ public class Player_Movement : MonoBehaviour {
         rb = GetComponent<Rigidbody2D>();
 
         //grid control move 
-        movePoint.parent = null;
+        //movePoint.parent = null;
 
     }
 
 
     void Update() {
+        animator.SetFloat("Horizontal",Input.GetAxis("Horizontal"));
+        animator.SetFloat("Vertical", Input.GetAxis("Vertical"));
+
+        
+
         if (!dead) {
             //player input
-            transform.position = Vector3.MoveTowards(transform.position, movePoint.position, moveSpeed * Time.deltaTime);
-
-            if (Vector3.Distance(transform.position, movePoint.position) == 0f) {
-
-                if (Mathf.Abs(Input.GetAxisRaw("Horizontal")) == 1f) {
-
-                    if (!Physics2D.OverlapCircle(movePoint.position + new Vector3(Input.GetAxisRaw("Horizontal"), 0f, 0f), .2f, WhatStopsPlayer)) {
-
-                        movePoint.position += new Vector3(Input.GetAxisRaw("Horizontal"), 0f, 0f);
-
-                    }
-                } else if (Mathf.Abs(Input.GetAxisRaw("Vertical")) == 1f) {
-
-                    if (!Physics2D.OverlapCircle(movePoint.position + new Vector3(0f, Input.GetAxisRaw("Vertical"), 0f), .2f, WhatStopsPlayer)) {
-
-                        movePoint.position += new Vector3(0f, Input.GetAxisRaw("Vertical"), 0f);
-                    }
-                }
-            }
-            //light input 
-
-            if (Input.GetKey(KeyCode.Q)) {
-                pointLight.Rotate(new Vector3(0, 0, 1.5f));
-            }
-            if (Input.GetKey(KeyCode.E)) {
-                pointLight.Rotate(new Vector3(0, 0, -1.5f));
-            }
+            Movement.x = Input.GetAxisRaw("Horizontal");
+            Movement.y = Input.GetAxisRaw("Vertical");        
         } else {
             deathScreenGameObject.GetComponent<CanvasGroup>().alpha = Mathf.Min(1, deathScreenGameObject.GetComponent<CanvasGroup>().alpha + 0.01f);
         }
 
         // regen stamina
-        float staminaSpeed = 1f;
-        stamina = Mathf.Min(maxStamina, stamina + staminaRegeneration);
-        if (Input.GetKey(KeyCode.LeftShift) && stamina >= staminaConsumption) {
-            stamina -= staminaConsumption;
-            staminaSpeed = 2f;
-        }
+        // float staminaSpeed = 1f;
+        // stamina = Mathf.Min(maxStamina, stamina + staminaRegeneration);
+        // if (Input.GetKey(KeyCode.LeftShift) && stamina >= staminaConsumption) {
+        //    stamina -= staminaConsumption;
+        //     staminaSpeed = 2f;
+        //}
 
         // movement
-        rb.MovePosition(rb.position + Movement * moveSpeed * staminaSpeed * Time.fixedDeltaTime);
+        rb.MovePosition(rb.position + Movement * moveSpeed * Time.fixedDeltaTime);
     }
 
     private void OnCollisionEnter2D(Collision2D collision) {
