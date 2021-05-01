@@ -2244,7 +2244,7 @@ GameObject:
   - component: {fileID: 677981539}
   m_Layer: 8
   m_Name: Door
-  m_TagString: Untagged
+  m_TagString: Door
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12165,7 +12165,7 @@ GameObject:
   - component: {fileID: 1307791383}
   m_Layer: 8
   m_Name: Door (1)
-  m_TagString: Untagged
+  m_TagString: Door
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29025,7 +29025,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a41a2a7a2a39914caf5e468756d62a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deathScreenGameObject: {fileID: 0}
+  deathScreenGameObject: {fileID: 977483807}
   dead: 0
   maxStamina: 0
   stamina: 0
@@ -29751,7 +29751,7 @@ GameObject:
   - component: {fileID: 1810480086}
   m_Layer: 0
   m_Name: Doors
-  m_TagString: Untagged
+  m_TagString: Door
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29866,7 +29866,7 @@ GameObject:
   - component: {fileID: 1822036668}
   m_Layer: 8
   m_Name: Door (2)
-  m_TagString: Untagged
+  m_TagString: Door
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

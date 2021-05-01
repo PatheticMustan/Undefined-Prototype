@@ -14,7 +14,7 @@ public class DestroyCrateScript : MonoBehaviour {
     }
 
     private void OnCollisionEnter2D(Collision2D collision) {
-        if (collision.gameObject.tag == "Crate") {
+        if (collision.gameObject.tag == "Crate" || collision.gameObject.tag == "Door") {
             Destroy(collision.gameObject);
         }
     }
