@@ -172,7 +172,7 @@ MonoBehaviour:
   m_LightType: 4
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.5
-  m_Color: {r: 0.9427508, g: 1, b: 0, a: 1}
+  m_Color: {r: 0, g: 0.9226117, b: 1, a: 1}
   m_Intensity: 0.15
   m_LightVolumeOpacity: 0
   m_ApplyToSortingLayers: 00000000
@@ -49622,7 +49622,7 @@ MonoBehaviour:
   m_LightType: 3
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.645
-  m_Color: {r: 0.8745098, g: 0.90588236, b: 0.6862745, a: 1}
+  m_Color: {r: 0.953504, g: 1, b: 0.6745283, a: 1}
   m_Intensity: 1
   m_LightVolumeOpacity: 0
   m_ApplyToSortingLayers: 00000000
@@ -81141,10 +81141,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   deathScreenGameObject: {fileID: 1003108221}
   dead: 0
-  maxStamina: 0
-  stamina: 0
-  staminaConsumption: 0
-  staminaRegeneration: 0
   pointLight: {fileID: 0}
   moveSpeed: 5
   animator: {fileID: 2048792307}
