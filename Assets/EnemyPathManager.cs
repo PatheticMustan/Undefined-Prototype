@@ -3,7 +3,7 @@ using UnityEngine;
 using System.Collections;
 
 [CustomEditor(typeof(EnemyPathConnector))]
-public class ahhhhh : Editor {
+public class EnemyPathManager : Editor {
     private Vector3[] positions;
 
     void OnSceneGUI() {
