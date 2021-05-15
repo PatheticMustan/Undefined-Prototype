@@ -10,13 +10,13 @@ public class Player_Movement : MonoBehaviour {
     public GameObject deathScreenGameObject;
     public bool dead;
 
-    [Space()]
+    /*[Space()]
     [Header("Stamina")]
 
     public float maxStamina;
     public float stamina;
     public float staminaConsumption;
-    public float staminaRegeneration;
+    public float staminaRegeneration;*/
 
     [Space()]
     [Header("Light")]
@@ -33,12 +33,10 @@ public class Player_Movement : MonoBehaviour {
     public Animator animator;
     
     void Start() {
-       
-
-        maxStamina = 100;
+        /*maxStamina = 100;
         stamina = 100;
         staminaConsumption = 0.2f;
-        staminaRegeneration = 0.4f;
+        staminaRegeneration = 0.4f;*/
 
         rb = GetComponent<Rigidbody2D>();
 

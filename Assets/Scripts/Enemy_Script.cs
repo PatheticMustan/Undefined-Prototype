@@ -17,6 +17,10 @@ public class Enemy_Script : MonoBehaviour {
     private GameObject player;
     private Transform target;
 
+    // enemy state
+    public enum EnemyState { Waiting, Chasing, Idle }
+    public EnemyState currentEnemyState;
+
     
 
     void Start() {
