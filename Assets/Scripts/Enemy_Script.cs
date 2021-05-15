@@ -62,6 +62,7 @@ public class Enemy_Script : MonoBehaviour {
                 // if they are, set lastSeenPoint to the player's position, set currentEnemyState to Chasing.
                 // otherwise, follow the next point on the path.
                 if (playerInSight()) {
+                    
                     lastSeenPoint = target.position;
                     currentEnemyState = EnemyState.Chasing;
                 } else { 
@@ -142,7 +143,7 @@ public class Enemy_Script : MonoBehaviour {
         RaycastHit2D hit = Physics2D.Raycast(enemyPos, enemyToPlayer, distance, layerMask);
 
         // 3. If the raycast hit the player, chase them!
-        detected = (hit.collider.gameObject.tag == "player");
+        detected = (hit.collider.gameObject.tag == "Player");
 
         return detected;
     }
