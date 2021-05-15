@@ -28838,8 +28838,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1604439301}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 8.46, y: 35.22, z: -1}
-  m_LocalScale: {x: 10, y: 10, z: 1}
+  m_LocalPosition: {x: 9.84, y: 35.59, z: -1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 389460072}
   m_RootOrder: 0
@@ -28878,18 +28878,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.08422065, y: 0.52187824}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.32, y: 0.32}
+    oldSize: {x: 3.84, y: 3.84}
     newSize: {x: 0.32, y: 0.32}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.32, y: 0.32}
+  m_Size: {x: 2.5434155, y: 2.8115482}
   m_EdgeRadius: 0
 --- !u!114 &1604439305
 MonoBehaviour:
@@ -28911,6 +28911,7 @@ MonoBehaviour:
   layers:
   - Player
   - 
+  currentEnemyState: 0
 --- !u!212 &1604439306
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -28949,7 +28950,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 914fa88e93768724e830a180ab88ae6f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 782b8e36dc883674bb848b768190fa23, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -29027,10 +29028,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   deathScreenGameObject: {fileID: 977483807}
   dead: 0
-  maxStamina: 0
-  stamina: 0
-  staminaConsumption: 0
-  staminaRegeneration: 0
   pointLight: {fileID: 0}
   moveSpeed: 5
   animator: {fileID: 1606696209}
