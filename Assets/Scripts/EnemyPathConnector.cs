@@ -5,7 +5,7 @@ public class EnemyPathConnector : MonoBehaviour {
 
     // relies on EnemyPathManager to do the cool things. Without it, this is just an empty husk.
     public void OnValidate() {
-        Debug.Log("ahhh! you are valid!");
-        Debug.Log(points.Length);
+        // Debug.Log("ahhh! you are valid!");
+        // Debug.Log(points.Length);
     }
 }
