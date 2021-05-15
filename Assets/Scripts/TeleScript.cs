@@ -5,7 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class TeleScript : MonoBehaviour {
     public string sceneName = "Test_Level_1";
-
+    public float transitiontime = 1f;
+    public Animator Levelload;
     void Start() {
 
     }
@@ -15,9 +16,19 @@ public class TeleScript : MonoBehaviour {
 
     }
 
-    private void OnCollisionEnter2D(Collision2D collision) {
+    public void OnCollisionEnter2D(Collision2D collision) {
         if (collision.gameObject.tag == "Player") {
-            SceneManager.LoadScene(sceneName);
+            StartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex + 1));
         }
+    }
+
+
+    IEnumerator LoadLevel(int LevelIndex) 
+     {
+        
+
+        yield return new WaitForSeconds(transitiontime);
+
+         SceneManager.LoadScene(LevelIndex);
     }
 }
