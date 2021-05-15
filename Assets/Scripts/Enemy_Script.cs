@@ -21,6 +21,8 @@ public class Enemy_Script : MonoBehaviour {
     public enum EnemyState { Waiting, Chasing, Idle }
     public EnemyState currentEnemyState;
 
+    public bool Shaking;
+    public Shake_Trigger Shake;
     
 
     void Start() {
@@ -29,6 +31,8 @@ public class Enemy_Script : MonoBehaviour {
 
         player = GameObject.Find("Player_Prototype");
         target = player.GetComponent<Transform>();
+
+        Shaking = false;
     }
 
     void FixedUpdate() {
@@ -77,5 +81,18 @@ public class Enemy_Script : MonoBehaviour {
         } else {
             detected = false;
         }
+
+        if (detected == true)
+        {
+            Shaking = true;
+        }
+
+        if (detected == false)
+        {
+            Shaking = false;
+        }
+
+        Shake.IsShaking(Shaking);
+
     }
 }

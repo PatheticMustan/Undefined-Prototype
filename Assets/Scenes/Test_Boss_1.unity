@@ -28911,6 +28911,9 @@ MonoBehaviour:
   layers:
   - Player
   - 
+  currentEnemyState: 0
+  Shaking: 0
+  Shake: {fileID: 2143883209}
 --- !u!212 &1604439306
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -29027,10 +29030,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   deathScreenGameObject: {fileID: 977483807}
   dead: 0
-  maxStamina: 0
-  stamina: 0
-  staminaConsumption: 0
-  staminaRegeneration: 0
+  Shake: {fileID: 2143883209}
+  Shaking: 0
   pointLight: {fileID: 0}
   moveSpeed: 5
   animator: {fileID: 1606696209}
@@ -30336,6 +30337,8 @@ GameObject:
   - component: {fileID: 2143883205}
   - component: {fileID: 2143883207}
   - component: {fileID: 2143883206}
+  - component: {fileID: 2143883209}
+  - component: {fileID: 2143883208}
   m_Layer: 9
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -30408,3 +30411,36 @@ Camera:
   m_OcclusionCulling: 0
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+--- !u!95 &2143883208
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2143883204}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3a0ffc90dba402e48886a027cb159349, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &2143883209
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2143883204}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 233def8c6e278364b936f54415ae2522, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AmShaking: 0
+  CamAni: {fileID: 2143883208}

@@ -6,9 +6,10 @@ public class Player_Movement : MonoBehaviour {
     // [SerializeField] public Player_Light fieldofview;
     private Rigidbody2D rb;
     private Vector2 Movement;
-
     public GameObject deathScreenGameObject;
     public bool dead;
+    public Shake_Trigger Shake;
+    public bool Shaking;
 
     /*[Space()]
     [Header("Stamina")]
@@ -37,6 +38,7 @@ public class Player_Movement : MonoBehaviour {
         stamina = 100;
         staminaConsumption = 0.2f;
         staminaRegeneration = 0.4f;*/
+        Shaking = false;
 
         rb = GetComponent<Rigidbody2D>();
 
@@ -50,8 +52,7 @@ public class Player_Movement : MonoBehaviour {
         animator.SetFloat("Horizontal",Input.GetAxis("Horizontal"));
         animator.SetFloat("Vertical", Input.GetAxis("Vertical"));
 
-        
-
+  
         if (!dead) {
             //player input
             Movement.x = Input.GetAxisRaw("Horizontal");
@@ -70,6 +71,14 @@ public class Player_Movement : MonoBehaviour {
 
         // movement
         rb.MovePosition(rb.position + Movement * moveSpeed * Time.fixedDeltaTime);
+
+      
+       // if ()
+       // {
+      //      Shaking = true;
+      //  }
+       // Shake.IsShaking(Shaking);
+     
     }
 
     private void OnCollisionEnter2D(Collision2D collision) {
