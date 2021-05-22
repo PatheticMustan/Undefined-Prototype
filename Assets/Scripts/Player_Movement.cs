@@ -8,8 +8,6 @@ public class Player_Movement : MonoBehaviour {
     private Vector2 Movement;
     public GameObject deathScreenGameObject;
     public bool dead;
-    public Shake_Trigger Shake;
-    public bool Shaking;
 
     /*[Space()]
     [Header("Stamina")]
@@ -38,10 +36,7 @@ public class Player_Movement : MonoBehaviour {
         stamina = 100;
         staminaConsumption = 0.2f;
         staminaRegeneration = 0.4f;*/
-        Shaking = false;
-
         rb = GetComponent<Rigidbody2D>();
-
         //grid control move 
         //movePoint.parent = null;
 
@@ -71,13 +66,6 @@ public class Player_Movement : MonoBehaviour {
 
         // movement
         rb.MovePosition(rb.position + Movement * moveSpeed * Time.deltaTime);
-       // if ()
-       // {
-      //      Shaking = true;
-      //  }
-       // Shake.IsShaking(Shaking);
-     
-      
     }
 
     private void OnCollisionEnter2D(Collision2D collision) {

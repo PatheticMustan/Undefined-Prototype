@@ -14,16 +14,7 @@ public class Shake_Trigger : MonoBehaviour
     
     void Update()
     {
-        if (AmShaking == false) 
-        {
-            CamAni.SetBool("Shake", false);
-        }
-        
-        if (AmShaking == true)
-        {
-            CamAni.SetBool("Shake", true);
-        }
-    
+        CamAni.SetBool("Shake", AmShaking);
     }
 
     public void IsShaking(bool Shaking)    
