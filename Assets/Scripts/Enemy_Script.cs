@@ -24,6 +24,9 @@ public class Enemy_Script : MonoBehaviour {
     public enum EnemyState { Waiting, Patrolling, Chasing, Alert }
     public EnemyState currentEnemyState;
 
+    public bool Shaking;
+    public Shake_Trigger Shake;
+    
     public Vector3 lastSeenPoint;
 
     void Start() {
@@ -32,6 +35,8 @@ public class Enemy_Script : MonoBehaviour {
 
         player = GameObject.Find("Player_Prototype");
         target = player.GetComponent<Transform>();
+
+        Shaking = false;
 
         if (GetComponent<EnemyPathConnector>() == null) {
             // visionchasers can either be waiting, chasing, or alert
@@ -152,6 +157,9 @@ public class Enemy_Script : MonoBehaviour {
 
         // 3. If the raycast hit the player, chase them!
         detected = (hit.collider == null) ? false : (hit.collider.gameObject.tag == "Player");
+        
+        Shaking = detected;
+        Shake.IsShaking(Shaking);
 
         return detected;
     }
