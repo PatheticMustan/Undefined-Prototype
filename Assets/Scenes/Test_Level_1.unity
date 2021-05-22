@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -1218,7 +1218,6 @@ MonoBehaviour:
   currentEnemyType: 0
   shouldShake: 0
   currentEnemyState: 0
-  Shaking: 0
   Shake: {fileID: 233970626}
   lastSeenPoint: {x: 0, y: 0, z: 0}
 --- !u!212 &549227830
@@ -1517,7 +1516,6 @@ MonoBehaviour:
   currentEnemyType: 0
   shouldShake: 0
   currentEnemyState: 0
-  Shaking: 0
   Shake: {fileID: 233970626}
   lastSeenPoint: {x: 0, y: 0, z: 0}
 --- !u!61 &615483573
@@ -2750,7 +2748,6 @@ MonoBehaviour:
   currentEnemyType: 0
   shouldShake: 0
   currentEnemyState: 0
-  Shaking: 0
   Shake: {fileID: 233970626}
   lastSeenPoint: {x: 0, y: 0, z: 0}
 --- !u!212 &874538285
@@ -3844,8 +3841,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   deathScreenGameObject: {fileID: 509949592}
   dead: 0
-  Shake: {fileID: 233970626}
-  Shaking: 0
   pointLight: {fileID: 0}
   moveSpeed: 5
   animator: {fileID: 1078433404}
@@ -16793,7 +16788,6 @@ MonoBehaviour:
   currentEnemyType: 0
   shouldShake: 0
   currentEnemyState: 0
-  Shaking: 0
   Shake: {fileID: 233970626}
   lastSeenPoint: {x: 0, y: 0, z: 0}
 --- !u!212 &1241433084
@@ -35916,7 +35910,6 @@ MonoBehaviour:
   currentEnemyType: 0
   shouldShake: 0
   currentEnemyState: 0
-  Shaking: 0
   Shake: {fileID: 233970626}
   lastSeenPoint: {x: 0, y: 0, z: 0}
 --- !u!212 &1701096127
@@ -37564,7 +37557,7 @@ PrefabInstance:
     - target: {fileID: 3138017053420397570, guid: 44d44a5c4220c7f4aaaceb63f605cfb9,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3219519309809239996, guid: 44d44a5c4220c7f4aaaceb63f605cfb9,
         type: 3}
