@@ -7,12 +7,22 @@ public class TeleScript : MonoBehaviour {
     public string sceneName = "Test_Level_1";
     public float transitiontime = 1f;
     public Animator Levelload;
+    public bool TransitionAlive;
+    public GameObject Transition; 
     void Start() {
 
+        Transition.SetActive(false);
+        TransitionAlive = false;
     }
 
     // Update is called once per frame
     void Update() {
+        if (TransitionAlive == true) 
+        {
+
+            Transition.SetActive(true);
+
+        }
 
     }
 
@@ -25,7 +35,9 @@ public class TeleScript : MonoBehaviour {
 
     IEnumerator LoadLevel(int LevelIndex) 
      {
-        
+        TransitionAlive = true;
+
+        Levelload.SetTrigger("Start");
 
         yield return new WaitForSeconds(transitiontime);
 
