@@ -85,7 +85,7 @@ public class Enemy_Script : MonoBehaviour {
 
                 Vector3 enemyPos = transform.position;
                 Vector3 playerPos = target.position;
-                if (Vector3.Distance(playerPos, enemyPos) > 0.1f) currentEnemyState = EnemyState.Alert;
+                if (Vector3.Distance(playerPos, enemyPos) < 0.1f) currentEnemyState = EnemyState.Alert;
 
                 break;
             case EnemyState.Alert:
