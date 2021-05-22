@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -81486,6 +81486,7 @@ GameObject:
   - component: {fileID: 2048792309}
   - component: {fileID: 2048792308}
   - component: {fileID: 2048792307}
+  - component: {fileID: 2048792313}
   m_Layer: 9
   m_Name: Player_Prototype
   m_TagString: Player
@@ -81644,6 +81645,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2048792313
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2048792306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 321f8ede203033b47a117a6ce3378594, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  light: {fileID: 394518647}
+  min: 1
+  max: 7
+  degeneracyRate: 0.07
 --- !u!4 &2053652637 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4557696083666676758, guid: b317d1b1dcb5e2948a47494fc2eb2b9a,

@@ -28,12 +28,12 @@ public class Light_View : MonoBehaviour {
 
 
     void Update() {
-        /*if (Input.GetKey(KeyCode.LeftBracket)) {
+        if (Input.GetKey(KeyCode.LeftBracket)) {
             angle += 2;
         }
         if (Input.GetKey(KeyCode.RightBracket)) {
             angle -= 2;
-        }*/
+        }
 
         float rayAngle = angle;
         float angleIncrease = fov / rayCount;
@@ -77,9 +77,9 @@ public class Light_View : MonoBehaviour {
             rayAngle -= angleIncrease;
         }
 
-        /*mesh.vertices = vertices;
+        mesh.vertices = vertices;
         mesh.uv = uv;
-        mesh.triangles = triangles;*/
+        mesh.triangles = triangles;
     }
 
     public static Vector3 GetVectorFromAngle(float angle) {
