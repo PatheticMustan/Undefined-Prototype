@@ -45,7 +45,7 @@ public class Enemy_Script : MonoBehaviour {
         }
     }
 
-    void FixedUpdate() {
+    void Update() {
         // lord forgive me for the spaghetti i unleash upon this project
         switch (currentEnemyState) {
             case EnemyState.Waiting:
@@ -62,10 +62,10 @@ public class Enemy_Script : MonoBehaviour {
                 // if they are, set lastSeenPoint to the player's position, set currentEnemyState to Chasing.
                 // otherwise, follow the next point on the path.
                 if (playerInSight()) {
-                    
                     lastSeenPoint = target.position;
                     currentEnemyState = EnemyState.Chasing;
-                } else { 
+                } else {
+                    // TODO: follow points
                 }
                 break;
             case EnemyState.Chasing:
@@ -75,13 +75,21 @@ public class Enemy_Script : MonoBehaviour {
                 // if the enemy is already at lastSeenPoint, go into Alert
                 if (playerInSight()) {
                     lastSeenPoint = target.position;
-                }
+                }                
+                // move towards last seen point
+                transform.position = Vector3.MoveTowards(transform.position, lastSeenPoint, moveSpeed * Time.deltaTime);
 
-                transform.position = Vector3.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime);
+                Vector3 enemyPos = transform.position;
+                Vector3 playerPos = target.position;
+                if (Vector3.Distance(playerPos, enemyPos) > 0.1f) currentEnemyState = EnemyState.Alert;
+
                 break;
             case EnemyState.Alert:
                 // exactly the same as waiting, but with a wider FOV. the enemy is in a higher state of awareness.
                 // increase FOV, increase vision distance, change currentEnemyState to Waiting.
+                // fovDegrees = 360;
+                // distance = Mathf.Max(distance + 0.2f, 10);
+                currentEnemyState = EnemyState.Waiting;
                 break;
         }
 
@@ -143,7 +151,7 @@ public class Enemy_Script : MonoBehaviour {
         RaycastHit2D hit = Physics2D.Raycast(enemyPos, enemyToPlayer, distance, layerMask);
 
         // 3. If the raycast hit the player, chase them!
-        detected = (hit.collider.gameObject.tag == "Player");
+        detected = (hit.collider == null) ? false : (hit.collider.gameObject.tag == "Player");
 
         return detected;
     }

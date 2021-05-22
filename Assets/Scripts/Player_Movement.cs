@@ -69,7 +69,7 @@ public class Player_Movement : MonoBehaviour {
         //}
 
         // movement
-        rb.MovePosition(rb.position + Movement * moveSpeed * Time.fixedDeltaTime);
+        rb.MovePosition(rb.position + Movement * moveSpeed * Time.deltaTime);
     }
 
     private void OnCollisionEnter2D(Collision2D collision) {
