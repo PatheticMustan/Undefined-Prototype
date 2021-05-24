@@ -28,7 +28,10 @@ public class Enemy_Script : MonoBehaviour {
 
     public Shake_Trigger Shake;
     
-    public Vector3 lastSeenPoint;
+    private Vector3 lastSeenPoint;
+
+    public float maxChaseThreasholdSeconds = 0.5f;
+    private float currentChaseThreasholdSeconds;
 
     void Start() {
         detected = false;
@@ -47,6 +50,8 @@ public class Enemy_Script : MonoBehaviour {
             currentEnemyType = EnemyType.PathFollower;
             currentEnemyState = EnemyState.Patrolling;
         }
+
+        currentChaseThreasholdSeconds = 0;
     }
 
     void Update() {
@@ -57,8 +62,14 @@ public class Enemy_Script : MonoBehaviour {
                 // if they are, set lastSeenPoint to the player's position, set currentEnemyState to Chasing.
                 // otherwise, don't do anything
                 if (playerInSight()) {
-                    lastSeenPoint = target.position;
-                    currentEnemyState = EnemyState.Chasing;
+                    if (currentChaseThreasholdSeconds >= maxChaseThreasholdSeconds) {
+                        lastSeenPoint = target.position;
+                        currentEnemyState = EnemyState.Chasing;
+                    } else {
+                        currentChaseThreasholdSeconds += Time.deltaTime;
+                    }
+                } else {
+                    currentChaseThreasholdSeconds = 0;
                 }
                 break;
             case EnemyState.Patrolling:
