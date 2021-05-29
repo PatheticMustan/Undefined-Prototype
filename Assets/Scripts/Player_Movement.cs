@@ -30,6 +30,9 @@ public class Player_Movement : MonoBehaviour {
     //public LayerMask WhatStopsPlayer;
 
     public Animator animator;
+
+    private float horizontal;
+    private float vertical;
     
     void Start() {
         /*maxStamina = 100;
@@ -44,15 +47,34 @@ public class Player_Movement : MonoBehaviour {
 
 
     void Update() {
-        animator.SetFloat("Horizontal",Input.GetAxis("Horizontal"));
-        animator.SetFloat("Vertical", Input.GetAxis("Vertical"));
 
-  
-        if (!dead) {
+        horizontal = Input.GetAxisRaw("Horizontal");
+        vertical = Input.GetAxisRaw("Vertical");
+    }
+
+    public void FixedUpdate()
+    {
+        if (vertical != 0)
+        {
+            animator.SetFloat("Vertical", vertical);
+            animator.SetFloat("Horizontal", 0);
+        }
+        else
+        {
+            animator.SetFloat("Horizontal", horizontal);
+            animator.SetFloat("Vertical", 0);
+        }
+
+
+
+        if (!dead)
+        {
             //player input
-            Movement.x = Input.GetAxisRaw("Horizontal");
-            Movement.y = Input.GetAxisRaw("Vertical");        
-        } else {
+            Movement.x = horizontal;
+            Movement.y = vertical;
+        }
+        else
+        {
             deathScreenGameObject.GetComponent<CanvasGroup>().alpha = Mathf.Min(1, deathScreenGameObject.GetComponent<CanvasGroup>().alpha + 0.01f);
         }
 
@@ -65,7 +87,10 @@ public class Player_Movement : MonoBehaviour {
         //}
 
         // movement
-        rb.MovePosition(rb.position + Movement * moveSpeed * Time.deltaTime);
+        rb.MovePosition(new Vector2(transform.position.x, transform.position.y) + (Movement * moveSpeed * Time.deltaTime));
+        rb.velocity = Vector2.zero;
+
+        //Debug.Log(rb.position + " " + Movement + " " + moveSpeed + " " + Time.deltaTime);
     }
 
     private void OnCollisionEnter2D(Collision2D collision) {
