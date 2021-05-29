@@ -33,6 +33,11 @@ public class Enemy_Script : MonoBehaviour {
     public float maxChaseThreasholdSeconds = 0.5f;
     private float currentChaseThreasholdSeconds;
 
+    public int currentPathPoint;
+    public bool isPathBackwards;
+
+    private GameObject[] points;
+
     void Start() {
         detected = false;
         layerMask = LayerMask.GetMask(layers);
@@ -52,6 +57,11 @@ public class Enemy_Script : MonoBehaviour {
         }
 
         currentChaseThreasholdSeconds = 0;
+
+        currentPathPoint = 0;
+        isPathBackwards = false;
+
+        points = GetComponent<EnemyPathConnector>().points;
     }
 
     void Update() {
@@ -80,7 +90,19 @@ public class Enemy_Script : MonoBehaviour {
                     lastSeenPoint = target.position;
                     currentEnemyState = EnemyState.Chasing;
                 } else {
-                    // TODO: follow points
+                    // follow points
+                    Vector3 currentPos = transform.position;
+                    Vector3 nextPathPos = points[currentPathPoint].transform.position;
+
+                    transform.position = Vector3.MoveTowards(currentPos, nextPathPos, moveSpeed * Time.deltaTime);
+
+                    if (Vector3.Distance(nextPathPos, currentPos) < 0.1f) {
+                        // if on the end of a path, flip around!
+                        if (currentPathPoint == 0 || currentPathPoint == points.Length-1) isPathBackwards = !isPathBackwards;
+
+                        // i am such a bad programmer, but an expert spaghetti chef
+                        currentPathPoint = Mathf.Min(Mathf.Max(currentPathPoint + (isPathBackwards ? -1 : 1), 0), points.Length-1);
+                    }
                 }
                 break;
             case EnemyState.Chasing:
@@ -112,6 +134,9 @@ public class Enemy_Script : MonoBehaviour {
     }
 
     bool playerInSight() {
+        // i am sorry for not commenting this
+        //float visionAngleThreashold = 5.0f / 2;
+
         // check if they're distance enough
         Vector3 enemyPos = transform.position;
         Vector3 playerPos = target.position;
