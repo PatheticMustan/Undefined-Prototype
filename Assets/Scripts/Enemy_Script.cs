@@ -33,10 +33,7 @@ public class Enemy_Script : MonoBehaviour {
     public float maxChaseThreasholdSeconds = 0.5f;
     private float currentChaseThreasholdSeconds;
 
-    public int currentPathPoint;
-    public bool isPathBackwards;
-
-    private GameObject[] points;
+    public EnemyPathConnector pc;
 
     void Start() {
         detected = false;
@@ -54,13 +51,13 @@ public class Enemy_Script : MonoBehaviour {
             // once pathfollowers see and chase after the player, they basically become visionchasers. same thing, I guess
             currentEnemyType = EnemyType.PathFollower;
             currentEnemyState = EnemyState.Patrolling;
-            points = GetComponent<EnemyPathConnector>().points;
+
+            pc = GetComponent<EnemyPathConnector>();
         }
 
         currentChaseThreasholdSeconds = 0;
 
-        currentPathPoint = 0;
-        isPathBackwards = false;
+        
     }
 
     void Update() {
@@ -91,16 +88,34 @@ public class Enemy_Script : MonoBehaviour {
                 } else {
                     // follow points
                     Vector3 currentPos = transform.position;
-                    Vector3 nextPathPos = points[currentPathPoint].transform.position;
+                    Vector3 nextPathPos = pc.points[pc.currentPathPoint].transform.position;
 
                     transform.position = Vector3.MoveTowards(currentPos, nextPathPos, moveSpeed * Time.deltaTime);
 
                     if (Vector3.Distance(nextPathPos, currentPos) < 0.1f) {
                         // if on the end of a path, flip around!
-                        if (currentPathPoint == 0 || currentPathPoint == points.Length-1) isPathBackwards = !isPathBackwards;
+                        if (pc.willLoop) {
+                            if (pc.isPathBackwards) {
+                                if (pc.currentPathPoint == 0) {
+                                    pc.currentPathPoint = pc.points.Length - 1;
+                                    break;
+                                }
+                            } else {
+                                if (pc.currentPathPoint == pc.points.Length - 1) {
+                                    pc.currentPathPoint = 0;
+                                    // if we don't put this break here, it'll skip from the end of the path to 1
+                                    break;
+                                }
+                            }
+                            
+                        } else {
+                            if (pc.currentPathPoint == 0 || pc.currentPathPoint == pc.points.Length - 1) {
+                                pc.isPathBackwards = !pc.isPathBackwards;
+                            }
+                        }
 
                         // i am such a bad programmer, but an expert spaghetti chef
-                        currentPathPoint = Mathf.Min(Mathf.Max(currentPathPoint + (isPathBackwards ? -1 : 1), 0), points.Length-1);
+                        pc.currentPathPoint = Mathf.Min(Mathf.Max(pc.currentPathPoint + (pc.isPathBackwards ? -1 : 1), 0), pc.points.Length-1);
                     }
                 }
                 break;
