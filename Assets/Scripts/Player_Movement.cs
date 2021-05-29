@@ -50,7 +50,10 @@ public class Player_Movement : MonoBehaviour {
 
         horizontal = Input.GetAxisRaw("Horizontal");
         vertical = Input.GetAxisRaw("Vertical");
+    }
 
+    public void FixedUpdate()
+    {
         if (vertical != 0)
         {
             animator.SetFloat("Vertical", vertical);
@@ -61,14 +64,17 @@ public class Player_Movement : MonoBehaviour {
             animator.SetFloat("Horizontal", horizontal);
             animator.SetFloat("Vertical", 0);
         }
-        
 
-  
-        if (!dead) {
+
+
+        if (!dead)
+        {
             //player input
             Movement.x = horizontal;
-            Movement.y = vertical;        
-        } else {
+            Movement.y = vertical;
+        }
+        else
+        {
             deathScreenGameObject.GetComponent<CanvasGroup>().alpha = Mathf.Min(1, deathScreenGameObject.GetComponent<CanvasGroup>().alpha + 0.01f);
         }
 
@@ -81,7 +87,10 @@ public class Player_Movement : MonoBehaviour {
         //}
 
         // movement
-        rb.MovePosition(rb.position + Movement * moveSpeed * Time.deltaTime);
+        rb.MovePosition(new Vector2(transform.position.x, transform.position.y) + (Movement * moveSpeed * Time.deltaTime));
+        rb.velocity = Vector2.zero;
+
+        //Debug.Log(rb.position + " " + Movement + " " + moveSpeed + " " + Time.deltaTime);
     }
 
     private void OnCollisionEnter2D(Collision2D collision) {

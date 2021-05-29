@@ -8,7 +8,9 @@ public class TeleScript : MonoBehaviour {
     public float transitiontime = 1f;
     public Animator Levelload;
     public bool TransitionAlive;
-    public GameObject Transition; 
+    public GameObject Transition;
+
+    //private bool playerEntered;
     void Start() {
 
         Transition.SetActive(false);
@@ -27,7 +29,7 @@ public class TeleScript : MonoBehaviour {
     }
 
     public void OnCollisionEnter2D(Collision2D collision) {
-        if (collision.gameObject.tag == "Player") {
+        if (collision.gameObject.tag == "Player" && !TransitionAlive) {
             StartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex + 1));
         }
     }
