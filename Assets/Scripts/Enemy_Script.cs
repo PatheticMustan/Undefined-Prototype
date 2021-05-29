@@ -54,14 +54,13 @@ public class Enemy_Script : MonoBehaviour {
             // once pathfollowers see and chase after the player, they basically become visionchasers. same thing, I guess
             currentEnemyType = EnemyType.PathFollower;
             currentEnemyState = EnemyState.Patrolling;
+            points = GetComponent<EnemyPathConnector>().points;
         }
 
         currentChaseThreasholdSeconds = 0;
 
         currentPathPoint = 0;
         isPathBackwards = false;
-
-        points = GetComponent<EnemyPathConnector>().points;
     }
 
     void Update() {
@@ -112,7 +111,7 @@ public class Enemy_Script : MonoBehaviour {
                 // if the enemy is already at lastSeenPoint, go into Alert
                 if (playerInSight()) {
                     lastSeenPoint = target.position;
-                }                
+                }
                 // move towards last seen point
                 transform.position = Vector3.MoveTowards(transform.position, lastSeenPoint, moveSpeed * Time.deltaTime);
 
