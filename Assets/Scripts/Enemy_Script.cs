@@ -33,7 +33,7 @@ public class Enemy_Script : MonoBehaviour {
     public float maxChaseThreasholdSeconds = 0.5f;
     private float currentChaseThreasholdSeconds;
 
-    public EnemyPathConnector pc;
+    private EnemyPathConnector pc;
 
     void Start() {
         detected = false;
