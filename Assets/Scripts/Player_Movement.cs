@@ -30,6 +30,9 @@ public class Player_Movement : MonoBehaviour {
     //public LayerMask WhatStopsPlayer;
 
     public Animator animator;
+
+    private float horizontal;
+    private float vertical;
     
     void Start() {
         /*maxStamina = 100;
@@ -44,14 +47,27 @@ public class Player_Movement : MonoBehaviour {
 
 
     void Update() {
-        animator.SetFloat("Horizontal",Input.GetAxis("Horizontal"));
-        animator.SetFloat("Vertical", Input.GetAxis("Vertical"));
+
+        horizontal = Input.GetAxisRaw("Horizontal");
+        vertical = Input.GetAxisRaw("Vertical");
+
+        if (vertical != 0)
+        {
+            animator.SetFloat("Vertical", vertical);
+            animator.SetFloat("Horizontal", 0);
+        }
+        else
+        {
+            animator.SetFloat("Horizontal", horizontal);
+            animator.SetFloat("Vertical", 0);
+        }
+        
 
   
         if (!dead) {
             //player input
-            Movement.x = Input.GetAxisRaw("Horizontal");
-            Movement.y = Input.GetAxisRaw("Vertical");        
+            Movement.x = horizontal;
+            Movement.y = vertical;        
         } else {
             deathScreenGameObject.GetComponent<CanvasGroup>().alpha = Mathf.Min(1, deathScreenGameObject.GetComponent<CanvasGroup>().alpha + 0.01f);
         }
