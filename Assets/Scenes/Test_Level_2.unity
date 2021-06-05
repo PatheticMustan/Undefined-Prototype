@@ -54239,6 +54239,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   door: {fileID: 1245686969}
   open: 0
+  unpushed: {fileID: 0}
+  pushed: {fileID: 0}
 --- !u!212 &335235539
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -56245,10 +56247,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fcfd242e1f2fca4daa98d4a1260af6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 4.8
+  moveSpeed: 4
   fovDegrees: 60
   startDeg: 355
-  distance: 15
+  distance: 7.5
   detected: 0
   layers:
   - Player
@@ -57964,10 +57966,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fcfd242e1f2fca4daa98d4a1260af6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 4.8
+  moveSpeed: 4
   fovDegrees: 60
   startDeg: 355
-  distance: 15
+  distance: 7.5
   detected: 0
   layers:
   - Player
@@ -82639,7 +82641,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 9
+  orthographic size: 10
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -86105,10 +86107,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fcfd242e1f2fca4daa98d4a1260af6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 4.8
+  moveSpeed: 4
   fovDegrees: 270
   startDeg: 180
-  distance: 15
+  distance: 7.5
   detected: 0
   layers:
   - Player
@@ -86864,10 +86866,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fcfd242e1f2fca4daa98d4a1260af6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 4.8
+  moveSpeed: 4
   fovDegrees: 270
   startDeg: 90
-  distance: 3
+  distance: 7.5
   detected: 0
   layers:
   - Player
@@ -87769,10 +87771,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fcfd242e1f2fca4daa98d4a1260af6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 4.8
+  moveSpeed: 4
   fovDegrees: 60
   startDeg: 355
-  distance: 15
+  distance: 7.5
   detected: 0
   layers:
   - Player
@@ -88247,10 +88249,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fcfd242e1f2fca4daa98d4a1260af6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 4.8
+  moveSpeed: 4
   fovDegrees: 360
   startDeg: 0
-  distance: 15
+  distance: 7.5
   detected: 0
   layers:
   - Player
@@ -88924,7 +88926,7 @@ Transform:
   m_GameObject: {fileID: 2048792306}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 6.24, y: 22.97, z: -1}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_LocalScale: {x: 0.7, y: 0.7, z: 1}
   m_Children:
   - {fileID: 388828537}
   - {fileID: 833570829}
@@ -89251,10 +89253,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fcfd242e1f2fca4daa98d4a1260af6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 4.8
+  moveSpeed: 4
   fovDegrees: 60
   startDeg: 340
-  distance: 15
+  distance: 7.5
   detected: 0
   layers:
   - Player

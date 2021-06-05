@@ -17,4 +17,8 @@ public class PlayerLightScript : MonoBehaviour {
     void Update() {
         light.pointLightOuterRadius = Mathf.Max(min, light.pointLightOuterRadius - (degeneracyRate * Time.deltaTime));
     }
+
+    public void UseBattery() {
+        light.pointLightOuterRadius = max;
+    }
 }
