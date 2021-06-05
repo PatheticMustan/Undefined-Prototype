@@ -60,6 +60,11 @@ public class Enemy_Script : MonoBehaviour {
         
     }
 
+    public static float CalculateAngle(Vector3 from, Vector3 to) {
+        return Quaternion.FromToRotation(Vector3.up, to - from).eulerAngles.z;
+
+    }
+
     void Update() {
         bool pis = playerInSight();
 
@@ -94,7 +99,7 @@ public class Enemy_Script : MonoBehaviour {
 
                     transform.position = Vector3.MoveTowards(currentPos, nextPathPos, moveSpeed * Time.deltaTime);
 
-                    startDeg = (Vector3.Angle(nextPathPos, transform.forward) + 180 - (fovDegrees / 2)) % 360;
+                    startDeg = CalculateAngle(nextPathPos, transform.forward);
 
                     if (Vector3.Distance(nextPathPos, currentPos) < 0.1f) {
                         // if on the end of a path, flip around!
@@ -136,7 +141,7 @@ public class Enemy_Script : MonoBehaviour {
 
                 Vector3 enemyPos = transform.position;
                 Vector3 playerPos = target.position;
-                startDeg = (Vector3.Angle(playerPos, transform.forward) + 180 - (fovDegrees / 2)) % 360;
+                startDeg = (CalculateAngle(playerPos, transform.forward));
                 if (Vector3.Distance(playerPos, enemyPos) < 0.1f) currentEnemyState = EnemyState.Alert;
 
                 break;
