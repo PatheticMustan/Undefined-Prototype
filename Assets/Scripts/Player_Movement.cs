@@ -6,8 +6,11 @@ public class Player_Movement : MonoBehaviour {
     // [SerializeField] public Player_Light fieldofview;
     private Rigidbody2D rb;
     private Vector2 Movement;
+
     public GameObject deathScreenGameObject;
     public bool dead;
+
+    public GameObject dsButton;
 
     /*[Space()]
     [Header("Stamina")]
@@ -43,6 +46,8 @@ public class Player_Movement : MonoBehaviour {
         //grid control move 
         //movePoint.parent = null;
 
+        dsButton.SetActive(false);
+
     }
 
 
@@ -76,6 +81,12 @@ public class Player_Movement : MonoBehaviour {
         else
         {
             deathScreenGameObject.GetComponent<CanvasGroup>().alpha = Mathf.Min(1, deathScreenGameObject.GetComponent<CanvasGroup>().alpha + 0.01f);
+            deathScreenGameObject.GetComponent<CanvasGroup>().interactable = true;
+
+            if (deathScreenGameObject.GetComponent<CanvasGroup>().alpha + 0.01f >= 1f)
+            {
+                dsButton.SetActive(true);
+            }
         }
 
         // regen stamina
