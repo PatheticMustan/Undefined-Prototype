@@ -61,13 +61,15 @@ public class Enemy_Script : MonoBehaviour {
     }
 
     void Update() {
+        bool pis = playerInSight();
+
         // lord forgive me for the spaghetti i unleash upon this project
         switch (currentEnemyState) {
             case EnemyState.Waiting:
                 // check to see if player is in sight.
                 // if they are, set lastSeenPoint to the player's position, set currentEnemyState to Chasing.
                 // otherwise, don't do anything
-                if (playerInSight()) {
+                if (pis) {
                     if (currentChaseThreasholdSeconds >= maxChaseThreasholdSeconds) {
                         lastSeenPoint = target.position;
                         currentEnemyState = EnemyState.Chasing;
@@ -82,7 +84,7 @@ public class Enemy_Script : MonoBehaviour {
                 // exactly the same as waiting, except follow a path. check to see if the player is in sight.
                 // if they are, set lastSeenPoint to the player's position, set currentEnemyState to Chasing.
                 // otherwise, follow the next point on the path.
-                if (playerInSight()) {
+                if (pis) {
                     lastSeenPoint = target.position;
                     currentEnemyState = EnemyState.Chasing;
                 } else {
@@ -124,7 +126,7 @@ public class Enemy_Script : MonoBehaviour {
                 // if they are, set lastSeenPoint to the player's position.
                 // otherwise, continue on to lastSeenPoint.
                 // if the enemy is already at lastSeenPoint, go into Alert
-                if (playerInSight()) {
+                if (pis) {
                     lastSeenPoint = target.position;
                 }
                 // move towards last seen point
@@ -154,7 +156,7 @@ public class Enemy_Script : MonoBehaviour {
         // check if they're distance enough
         Vector3 enemyPos = transform.position;
         Vector3 playerPos = target.position;
-        if (Vector3.Distance(playerPos, enemyPos) > distance) return false;
+        //if (Vector3.Distance(playerPos, enemyPos) > distance) return false;
 
         /* raycast!
          * shoot ray to detect walls or the player, whichever it hits first
