@@ -9,6 +9,7 @@ public class TeleScript : MonoBehaviour {
     public Animator Levelload;
     public bool TransitionAlive;
     public GameObject Transition;
+    public GameObject deathScreen;
 
     //private bool playerEntered;
     void Start() {
@@ -19,8 +20,7 @@ public class TeleScript : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        if (TransitionAlive == true) 
-        {
+        if (TransitionAlive == true) {
 
             Transition.SetActive(true);
 
@@ -31,18 +31,18 @@ public class TeleScript : MonoBehaviour {
     public void OnCollisionEnter2D(Collision2D collision) {
         if (collision.gameObject.tag == "Player" && !TransitionAlive) {
             StartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex + 1));
+            deathScreen.SetActive(false);
         }
     }
 
 
-    IEnumerator LoadLevel(int LevelIndex) 
-     {
+    IEnumerator LoadLevel(int LevelIndex) {
         TransitionAlive = true;
 
         Levelload.SetTrigger("Start");
 
         yield return new WaitForSeconds(transitiontime);
 
-         SceneManager.LoadScene(LevelIndex);
+        SceneManager.LoadScene(LevelIndex);
     }
 }
