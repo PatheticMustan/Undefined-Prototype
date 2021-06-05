@@ -1,25 +1,43 @@
 fileFormatVersion: 2
-guid: ac77a4e7b28232b428b5e4fa8d7c4630
+guid: 995015b9ef845d344bfec0be3639c2f2
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4232228023004831750
-    second: SpiderLadyFront_1_0
+      213: -1699251930846420129
+    second: SpiderLadyLeft_0
   - first:
-      213: -9184000809638414004
-    second: SpiderLadyFront_1_1
+      213: -364654766973616666
+    second: SpiderLadyLeft_1
   - first:
-      213: -4163310817751361032
-    second: SpiderLadyFront_1_2
+      213: 5858465386484384764
+    second: SpiderLadyLeft_2
   - first:
-      213: -3527635927419331343
-    second: SpiderLadyFront_1_3
+      213: -6859652858031086360
+    second: SpiderLadyLeft_3
   - first:
-      213: 2674055828690940780
-    second: SpiderLadyFront_1_4
+      213: 6724699690177512935
+    second: SpiderLadyLeft_4
   - first:
-      213: 6568181183600565914
-    second: SpiderLadyFront_1_5
+      213: -4400178901044655935
+    second: SpiderLadyLeft_5
+  - first:
+      213: -4250371821922199578
+    second: SpiderLadyLeft_6
+  - first:
+      213: 5279542857254019243
+    second: SpiderLadyLeft_7
+  - first:
+      213: -8746493723190101307
+    second: SpiderLadyLeft_8
+  - first:
+      213: -2061599840452519274
+    second: SpiderLadyLeft_9
+  - first:
+      213: 3602005369669649787
+    second: SpiderLadyLeft_10
+  - first:
+      213: 7506748753767623734
+    second: SpiderLadyLeft_11
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -116,13 +134,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: SpiderLadyFront_1_0
+      name: SpiderLadyLeft_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 1792
-        width: 896
-        height: 896
+        y: 2560
+        width: 1280
+        height: 1280
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -130,20 +148,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 112c442f29a3b384dbc52cf868ae4bcc
-      internalID: -4232228023004831750
+      spriteID: 68957de9b76688d4e8366f8e9c7b35e3
+      internalID: -1699251930846420129
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpiderLadyFront_1_1
+      name: SpiderLadyLeft_1
       rect:
         serializedVersion: 2
-        x: 896
-        y: 1792
-        width: 896
-        height: 896
+        x: 1280
+        y: 2560
+        width: 1280
+        height: 1280
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -151,20 +169,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ec90b534cc2ea9342974f90cb5e7d72d
-      internalID: -9184000809638414004
+      spriteID: 7bed174dade42d248914f70953a5f974
+      internalID: -364654766973616666
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpiderLadyFront_1_2
+      name: SpiderLadyLeft_2
       rect:
         serializedVersion: 2
         x: 0
-        y: 896
-        width: 896
-        height: 896
+        y: 1280
+        width: 1280
+        height: 1280
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -172,20 +190,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9dc5995be64491c4eb140c0203e2437d
-      internalID: -4163310817751361032
+      spriteID: 48ae34f16da08ec4cba659bf894ed3cd
+      internalID: 5858465386484384764
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpiderLadyFront_1_3
+      name: SpiderLadyLeft_3
       rect:
         serializedVersion: 2
-        x: 896
-        y: 896
-        width: 896
-        height: 896
+        x: 1280
+        y: 1280
+        width: 1280
+        height: 1280
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -193,20 +211,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b6b36386f752edc4bad287ae3a06ffee
-      internalID: -3527635927419331343
+      spriteID: 64133c277ffb93746805566faa017764
+      internalID: -6859652858031086360
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpiderLadyFront_1_4
+      name: SpiderLadyLeft_4
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 896
-        height: 896
+        width: 1280
+        height: 1280
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -214,20 +232,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6f1b1add6cb55254fb1811d8de2b0e66
-      internalID: 2674055828690940780
+      spriteID: 96e1c0d421af60841a912045918f54dd
+      internalID: 6724699690177512935
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpiderLadyFront_1_5
+      name: SpiderLadyLeft_5
       rect:
         serializedVersion: 2
-        x: 896
+        x: 1280
         y: 0
-        width: 896
-        height: 896
+        width: 1280
+        height: 1280
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -235,8 +253,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 84bf5669ae60bd7469e5865340251628
-      internalID: 6568181183600565914
+      spriteID: 158d8408422663342a307d535fc2189d
+      internalID: -4400178901044655935
       vertices: []
       indices: 
       edges: []
