@@ -56259,7 +56259,6 @@ MonoBehaviour:
   currentEnemyState: 0
   Shake: {fileID: 0}
   maxChaseThreasholdSeconds: 0.5
-  pc: {fileID: 0}
 --- !u!212 &558749977
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -57979,7 +57978,6 @@ MonoBehaviour:
   currentEnemyState: 0
   Shake: {fileID: 0}
   maxChaseThreasholdSeconds: 0.5
-  pc: {fileID: 0}
 --- !u!212 &827258242
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -86121,7 +86119,6 @@ MonoBehaviour:
   currentEnemyState: 0
   Shake: {fileID: 0}
   maxChaseThreasholdSeconds: 0.5
-  pc: {fileID: 0}
 --- !u!212 &1568560719
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -86881,7 +86878,6 @@ MonoBehaviour:
   currentEnemyState: 0
   Shake: {fileID: 0}
   maxChaseThreasholdSeconds: 0.5
-  pc: {fileID: 0}
 --- !u!212 &1750679329
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -87787,7 +87783,6 @@ MonoBehaviour:
   currentEnemyState: 0
   Shake: {fileID: 0}
   maxChaseThreasholdSeconds: 0.5
-  pc: {fileID: 0}
 --- !u!212 &1899994290
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -88266,7 +88261,6 @@ MonoBehaviour:
   currentEnemyState: 0
   Shake: {fileID: 0}
   maxChaseThreasholdSeconds: 0.5
-  pc: {fileID: 0}
 --- !u!212 &1922230710
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -89271,7 +89265,6 @@ MonoBehaviour:
   currentEnemyState: 0
   Shake: {fileID: 0}
   maxChaseThreasholdSeconds: 0.5
-  pc: {fileID: 0}
 --- !u!212 &2079828874
 SpriteRenderer:
   m_ObjectHideFlags: 0

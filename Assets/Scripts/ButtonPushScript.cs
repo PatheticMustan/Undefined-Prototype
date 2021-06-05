@@ -7,6 +7,9 @@ public class ButtonPushScript : MonoBehaviour {
     public GameObject door;
     public bool open;
 
+    public Sprite unpushed;
+    public Sprite pushed;
+
     void Start() {
         open = false;
     }
@@ -18,7 +21,8 @@ public class ButtonPushScript : MonoBehaviour {
         if (col.gameObject.tag.Equals("Crate") || col.gameObject.tag.Equals("Player")) {
             open = !open;
             door.SetActive(!open);
-            GetComponent<SpriteRenderer>().color = open ? new Color(0x00, 0xFF, 0x00) : new Color(0xFF, 0x00, 0x00);
+            //GetComponent<SpriteRenderer>().color = open ? new Color(0x00, 0xFF, 0x00) : new Color(0xFF, 0x00, 0x00);
+            GetComponent<SpriteRenderer>().sprite = open ? pushed : unpushed;
         }
 
     }
