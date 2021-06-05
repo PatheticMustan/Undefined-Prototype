@@ -13,6 +13,9 @@ public class BoxDestroyPS : MonoBehaviour
     void Start()
     {
         flag = false;
+
+        //boxObj.transform.parent = null;
+        //boxPS.gameObject.transform.parent = null;
     }
 
     // Update is called once per frame
