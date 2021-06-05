@@ -94,6 +94,8 @@ public class Enemy_Script : MonoBehaviour {
 
                     transform.position = Vector3.MoveTowards(currentPos, nextPathPos, moveSpeed * Time.deltaTime);
 
+                    startDeg = (Vector3.Angle(nextPathPos, transform.forward) + 180 - (fovDegrees / 2)) % 360;
+
                     if (Vector3.Distance(nextPathPos, currentPos) < 0.1f) {
                         // if on the end of a path, flip around!
                         if (pc.willLoop) {
@@ -134,6 +136,7 @@ public class Enemy_Script : MonoBehaviour {
 
                 Vector3 enemyPos = transform.position;
                 Vector3 playerPos = target.position;
+                startDeg = (Vector3.Angle(playerPos, transform.forward) + 180 - (fovDegrees / 2)) % 360;
                 if (Vector3.Distance(playerPos, enemyPos) < 0.1f) currentEnemyState = EnemyState.Alert;
 
                 break;
