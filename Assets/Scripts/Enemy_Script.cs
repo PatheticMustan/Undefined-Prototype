@@ -139,6 +139,16 @@ public class Enemy_Script : MonoBehaviour {
                 // move towards last seen point
                 transform.position = Vector3.MoveTowards(transform.position, lastSeenPoint, moveSpeed * Time.deltaTime);
 
+                Vector3 direction = lastSeenPoint - transform.position;
+                if (Mathf.Abs(direction.x) > Mathf.Abs(direction.y))
+                {
+                    //Set Animator for blob to x val
+                }
+                else
+                {
+                    //set animator for blob to y val
+                }
+
                 Vector3 enemyPos = transform.position;
                 Vector3 playerPos = target.position;
 
