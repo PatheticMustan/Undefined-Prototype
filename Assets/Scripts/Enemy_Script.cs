@@ -35,12 +35,16 @@ public class Enemy_Script : MonoBehaviour {
 
     private EnemyPathConnector pc;
 
+    // animator
+    private Animator animator;
+
     void Start() {
         detected = false;
         layerMask = LayerMask.GetMask(layers);
 
         player = GameObject.Find("Player_Prototype");
         target = player.GetComponent<Transform>();
+        animator = GetComponent<Animator>();
 
         if (GetComponent<EnemyPathConnector>() == null) {
             // visionchasers can either be waiting, chasing, or alert
@@ -58,10 +62,13 @@ public class Enemy_Script : MonoBehaviour {
         currentChaseThreasholdSeconds = 0;
 
         
+
+
     }
 
     void Update() {
         bool pis = playerInSight();
+        updateAnimation(gameObject.transform.position, target.position);
 
         // lord forgive me for the spaghetti i unleash upon this project
         switch (currentEnemyState) {
@@ -215,5 +222,13 @@ public class Enemy_Script : MonoBehaviour {
         }
 
         return detected;
+    }
+
+    void updateAnimation(Vector3 selfPosition, Vector3 targetPosition) {
+        float x = targetPosition.x - selfPosition.x;
+        float y = targetPosition.y - selfPosition.y;
+
+        animator.SetFloat("Horizontal", Mathf.Abs(x));
+        animator.SetFloat("Vertical", Mathf.Abs(y));
     }
 }
