@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Animator))]
 public class Enemy_Script : MonoBehaviour {
     // set default values in inspector
     public float moveSpeed = 3;
@@ -139,16 +140,6 @@ public class Enemy_Script : MonoBehaviour {
                 // move towards last seen point
                 transform.position = Vector3.MoveTowards(transform.position, lastSeenPoint, moveSpeed * Time.deltaTime);
 
-                Vector3 direction = lastSeenPoint - transform.position;
-                if (Mathf.Abs(direction.x) > Mathf.Abs(direction.y))
-                {
-                    //Set Animator for blob to x val
-                }
-                else
-                {
-                    //set animator for blob to y val
-                }
-
                 Vector3 enemyPos = transform.position;
                 Vector3 playerPos = target.position;
 
@@ -238,7 +229,18 @@ public class Enemy_Script : MonoBehaviour {
         float x = targetPosition.x - selfPosition.x;
         float y = targetPosition.y - selfPosition.y;
 
-        animator.SetFloat("Horizontal", Mathf.Abs(x));
-        animator.SetFloat("Vertical", Mathf.Abs(y));
+        Vector3 direction = lastSeenPoint - transform.position;
+        if (Mathf.Abs(direction.x) > Mathf.Abs(direction.y)) {
+            // Set Animator for blob to x val
+            animator.SetFloat("Horizontal", x);
+            animator.SetFloat("Vertical", 0);
+        } else {
+            // set animator for blob to y val
+            animator.SetFloat("Horizontal", 0);
+            animator.SetFloat("Vertical", y);
+        }
+
+        // if the enemy turns left, flip the sprite
+        GetComponent<SpriteRenderer>().flipX = direction.x < 0;
     }
 }

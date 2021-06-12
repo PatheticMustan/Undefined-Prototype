@@ -36,7 +36,7 @@ public class Player_Movement : MonoBehaviour {
 
     private float horizontal;
     private float vertical;
-    
+
     void Start() {
         /*maxStamina = 100;
         stamina = 100;
@@ -57,34 +57,26 @@ public class Player_Movement : MonoBehaviour {
         vertical = Input.GetAxisRaw("Vertical");
     }
 
-    public void FixedUpdate()
-    {
-        if (vertical != 0)
-        {
+    public void FixedUpdate() {
+        if (vertical != 0) {
             animator.SetFloat("Vertical", vertical);
             animator.SetFloat("Horizontal", 0);
-        }
-        else
-        {
+        } else {
             animator.SetFloat("Horizontal", horizontal);
             animator.SetFloat("Vertical", 0);
         }
 
 
 
-        if (!dead)
-        {
+        if (!dead) {
             //player input
             Movement.x = horizontal;
             Movement.y = vertical;
-        }
-        else
-        {
+        } else {
             deathScreenGameObject.GetComponent<CanvasGroup>().alpha = Mathf.Min(1, deathScreenGameObject.GetComponent<CanvasGroup>().alpha + 0.01f);
             deathScreenGameObject.GetComponent<CanvasGroup>().interactable = true;
 
-            if (deathScreenGameObject.GetComponent<CanvasGroup>().alpha + 0.01f >= 1f)
-            {
+            if (deathScreenGameObject.GetComponent<CanvasGroup>().alpha + 0.01f >= 1f) {
                 dsButton.SetActive(true);
             }
         }
