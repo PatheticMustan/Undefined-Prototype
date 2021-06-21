@@ -36,6 +36,8 @@ public class Enemy_Script : MonoBehaviour {
 
     private EnemyPathConnector pc;
 
+    public bool flipLeftRightAnimations;
+
     // animator
     private Animator animator;
 
@@ -241,6 +243,6 @@ public class Enemy_Script : MonoBehaviour {
         }
 
         // if the enemy turns left, flip the sprite
-        GetComponent<SpriteRenderer>().flipX = direction.x < 0;
+        GetComponent<SpriteRenderer>().flipX = (flipLeftRightAnimations) == (direction.x < 0);
     }
 }

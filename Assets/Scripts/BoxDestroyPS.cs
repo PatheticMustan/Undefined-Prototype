@@ -2,16 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BoxDestroyPS : MonoBehaviour
-{
+public class BoxDestroyPS : MonoBehaviour {
     public GameObject boxObj;
 
     public ParticleSystem boxPS;
 
     private bool flag;
     // Start is called before the first frame update
-    void Start()
-    {
+    void Start() {
         flag = false;
 
         //boxObj.transform.parent = null;
@@ -19,10 +17,8 @@ public class BoxDestroyPS : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        if (!boxObj.activeSelf && !flag)
-        {
+    void Update() {
+        if (!boxObj.activeSelf && !flag) {
             flag = true;
 
             boxPS.gameObject.transform.position = boxObj.transform.position;
