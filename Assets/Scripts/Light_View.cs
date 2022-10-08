@@ -3,65 +3,64 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Light_View : MonoBehaviour {
-    [SerializeField] private LayerMask layerMask;
+    private LayerMask layerMask;
     private Mesh mesh;
     //private float fov;
     private Vector3 origin;
     //private float startingangle;
 
-    public float fov;
-    public int RayCount;
-    public float angle;
-    public float viewdistance;
-    // public float x;
+    public int fov = 360;
+    public int rayCount = 180;
+    public int angle = 0;
+    public float rayDistance = 5f;
 
     public bool verbose = true;
+
+    public string[] layers = new string[] { "Wall", "Crate" };
 
     void Start() {
         origin = Vector3.zero;
         mesh = new Mesh();
         GetComponent<MeshFilter>().mesh = mesh;
 
-        layerMask = LayerMask.GetMask("Wall");
-
-        Debug.Log(layerMask.value);
-
-        fov = 20f;
-        RayCount = 10;
-        angle = 0f;
-
-        viewdistance = 5f;
+        layerMask = LayerMask.GetMask(layers);
     }
 
 
     void Update() {
         if (Input.GetKey(KeyCode.LeftBracket)) {
-            angle += 1.5f;
+            angle += 2;
         }
         if (Input.GetKey(KeyCode.RightBracket)) {
-            angle -= 1.5f;
+            angle -= 2;
         }
 
         float rayAngle = angle;
-        float angleIncrease = fov / RayCount;
+        float angleIncrease = fov / rayCount;
 
-        Vector3[] vertices = new Vector3[RayCount + 1 + 1];
+        // 1 triangle will have 3 points
+        // 2 triangles, sharing two points, will have 4 points
+        // thus, n triangles will take n+2 points
+        Vector3[] vertices = new Vector3[rayCount + 2];
         Vector2[] uv = new Vector2[vertices.Length];
-        int[] triangles = new int[RayCount * 3];
+        int[] triangles = new int[rayCount * 3];
 
         vertices[0] = origin;
 
 
         int VertexIndex = 1;
         int TrianglesIndex = 0;
-        for (int i = 0; i <= RayCount; i++) {
+        for (int i = 0; i <= rayCount; i++) {
             Vector3 vertex;
-            RaycastHit2D raycasthit2D = Physics2D.Raycast(origin, GetVectorFromAngle(rayAngle), viewdistance, layerMask);
+            RaycastHit2D raycasthit2D = Physics2D.Raycast(origin, GetVectorFromAngle(rayAngle), rayDistance, layerMask);
+
+            Debug.DrawRay(origin, GetVectorFromAngle(rayAngle), Color.green);
+
             if (raycasthit2D.collider != null) {
                 Debug.Log(raycasthit2D.collider.gameObject.name);
                 vertex = raycasthit2D.point;
             } else {
-                vertex = origin + GetVectorFromAngle(rayAngle) * viewdistance;
+                vertex = origin + GetVectorFromAngle(rayAngle) * rayDistance;
             }
 
             vertices[VertexIndex] = vertex;
