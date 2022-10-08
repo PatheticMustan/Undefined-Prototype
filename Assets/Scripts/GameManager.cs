@@ -2,21 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-public class GameManager : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
-    {
-
+public class GameManager : MonoBehaviour {
+    void Start() {
+        Cursor.visible = true;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
+    void Update() {
 
     }
-    public void OnClick()
-    {
-        SceneManager.LoadScene("Tile Map");
+    public void OnClick() {
+        Cursor.visible = false;
+        SceneManager.LoadScene("Test_Level_1");
     }
 }
